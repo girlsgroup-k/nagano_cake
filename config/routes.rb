@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
   
   scope module: :public do
-    root to: 'home#top'
+    root to: 'homes#top'
     get 'about' => 'homes#about', as: 'about'
     resources :delivery_addresses, only: [:index, :create, :edit, :update, :destroy]
     resources :items, only: [:index, :show]
