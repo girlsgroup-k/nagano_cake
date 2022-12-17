@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     patch 'customers/withdrawal' => 'customers#withdrawal', as: 'customers_withdrawal'
   end
 
-  devise_for :admins, skip: [:registrations, :passwords], controllers: {
+  devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
   devise_for :customers,skip: [:passwords], controllers: {
