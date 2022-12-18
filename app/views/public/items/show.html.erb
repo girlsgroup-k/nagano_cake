@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <%= image_tag @item.item_image %>
+      <%= image_tag @item.get_item_image(100,100) %>
       <%= @item.name %>
       <%= @item.detail %>
       <%= @item.tax_exclusive_price %>
