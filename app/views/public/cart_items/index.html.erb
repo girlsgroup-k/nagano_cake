@@ -1,2 +1,57 @@
-<h1>Public::CartItems#index</h1>
-<p>Find me in app/views/public/cart_items/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2>ショッピングカート</h2>
+    </div>
+    <div class="col">
+      <button type="button" class="btn btn-danger">カートを空にする</button>
+    </div>
+  </div>
+  <div class="row">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>商品名</th>
+          <th>単価(税込)</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th colspan="1"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td></td>
+          <td></td>
+          <td>
+            <button type="button" class="btn btn-success">変更</button>
+          </td>
+          <td></td>
+          <td></td>
+          <td>
+            <button type="button" class="btn btn-danger">削除する</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="row">
+    <div class="col">
+      <button type="button" class="btn btn-primary">買い物を続ける</button>
+    </div>
+    <div class="col">
+      <table>
+        <tbody>
+          <tr>
+            <th scope="row">合計金額</th>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <button type="button" class="btn btn-success">情報入力に進む</button>
+    </div>
+  </div>
+</div>
