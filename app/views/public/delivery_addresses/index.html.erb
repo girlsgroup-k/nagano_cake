@@ -3,10 +3,30 @@
 <h4>画像投稿フォーム</h4>
 <%= form_with model: @delivery_address do |f| %>
   <h6>郵便番号(ハイフンなし)</h6>
-    <%= f.text_field :post_code %>
+    <%= f.text_field :post_code, placeholder: "0000000" %>
   <h6>住所</h6>
-    <%= f.text_field :address %>
+    <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町０－０" %>
   <h6>宛名</h6>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, placeholder: "令和道子" %>
   <%= f.submit '新規登録' %>
 <% end %>
+
+<table>
+    <% @delivery_addresses.each do |delivery_address| %>
+    <thead>
+        <tr>
+            <th>郵便番号</th>
+            <th>住所</th>
+            <th>宛名</th>
+            <th></th>
+        </tr>
+        <tr>
+            <td><%= delivery_address.post_code %></td>
+            <td><%= delivery_address.address %></td>
+            <td><%= delivery_address.name %></td>
+            <td><%= link_to "編集する", edit_delivery_address_path(delivery_address) %></td>
+            <td><%= link_to "削除する", delivery_address_path(delivery_address), method: :delete, data: {confirm: "本当に消しますか？"}  %></td>
+        </tr>
+    </thead>
+    <% end %>
+</table>
