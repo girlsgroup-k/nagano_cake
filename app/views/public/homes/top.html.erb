@@ -1,2 +1,21 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-8">
+      <p class="top_introduction">
+        ようこそ、ながのCAKEへ！<br>
+        このサイトは、ケーキ販売のECサイトになります。<br>
+        会員ではない方も商品の閲覧ができますが、<br>
+        購入には会員登録が必要になります。
+      </p>
+    </div>
+    <div class="col-2"></div>
+  </div>
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-10">
+      <h2>新着商品</h1>
+    </div>
+    <%=  link_to "すべての商品を見る>", items_path, class: 'text-right' %>
+  </div>
+</div>
