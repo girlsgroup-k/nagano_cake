@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :create, :edit, :update]
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
   end
-  
+
   scope module: :public do
     root to: 'homes#top'
     get 'about' => 'homes#about', as: 'about'
