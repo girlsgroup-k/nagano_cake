@@ -10,7 +10,7 @@
           <div class="d-grid gap-2 d-md-block">
           <% if customer_signed_in? %>
             <div class="float-right">
-              <%= link_to my_page_path(current_customer),class: 'btn btn-outline-dark' do %>
+              <%= link_to my_page_path,class: 'btn btn-outline-dark' do %>
                 マイページ
               <% end %>
               <%=  link_to items_path,class: 'btn btn-outline-dark' do %>
