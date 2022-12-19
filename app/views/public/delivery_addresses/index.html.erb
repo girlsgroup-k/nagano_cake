@@ -11,7 +11,6 @@
 <% end %>
 
 <table>
-    <% @delivery_addresses.each do |delivery_address| %>
     <thead>
         <tr>
             <th>郵便番号</th>
@@ -19,13 +18,14 @@
             <th>宛名</th>
             <th></th>
         </tr>
-        <tr>
+        <% @delivery_addresses.each do |delivery_address| %>
+          <tr>
             <td><%= delivery_address.post_code %></td>
             <td><%= delivery_address.address %></td>
             <td><%= delivery_address.name %></td>
             <td><%= link_to "編集する", edit_delivery_address_path(delivery_address) %></td>
             <td><%= link_to "削除する", delivery_address_path(delivery_address), method: :delete, data: {confirm: "本当に消しますか？"}  %></td>
-        </tr>
+          </tr>
+        <% end %>
     </thead>
-    <% end %>
 </table>
