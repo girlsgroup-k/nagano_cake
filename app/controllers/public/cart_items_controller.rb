@@ -31,7 +31,7 @@ class Public::CartItemsController < ApplicationController
       cart_item.item_quantity += params[:cart_item][:item_quantity].to_i
       cart_item.save
     else
-      cart_item.save
+      @cart_item.save
     end
     @cart_items = CartItem.all
     redirect_to cart_items_path
