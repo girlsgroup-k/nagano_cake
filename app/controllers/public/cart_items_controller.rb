@@ -26,11 +26,10 @@ class Public::CartItemsController < ApplicationController
 
   def create
     @cart_item = CartItem.new(cart_item_params)
-    @cart_items = CartItem.find_by(customer_id: current_customer.id)
-    if @new_cart_items = Item.find_by(id: @cart_item.item_id)
-      new_quantity = @new_cart_items.itemcart_items.item_quantity.to_i + @cart_item.item_quantity.to_i
-      cart_item.update_attribute(:item_quantity, new_quantity)
-      @cart_item.delete
+    if current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id]).present?
+      cart_item = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
+      cart_item.item_quantity += params[:cart_item][:item_quantity].to_i
+      cart_item.save
     else
       cart_item.save
     end
