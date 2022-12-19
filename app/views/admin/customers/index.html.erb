@@ -16,7 +16,7 @@
           <td><%= customer.id %></td>
           <td>
             <%= link_to admin_customer_path(customer.id) do %>
-              <u class="text-body">
+              <u>
                 <%= customer.first_name %><%= customer.last_name %>
               </u>
             <% end %>
@@ -25,6 +25,8 @@
           <td>
             <% if customer.is_deleted == false %>
               <strong class="text-success">有効</strong>
+            <% else %>
+              <strong class="text-black-50">退会</strong>
             <% end %>
           </td>
         </tr>
