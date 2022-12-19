@@ -9,8 +9,8 @@
           <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %>
         </div>
         <div class="form-check">
-          <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer]%>
           <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+          <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer]%>
         </div>
           <%= f.hidden_field :select_post_code, :value => 0 %>
           <%= f.hidden_field :select_address, :value => 0 %>
