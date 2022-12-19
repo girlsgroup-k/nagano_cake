@@ -1,7 +1,7 @@
 class Public::DeliveryAddressesController < ApplicationController
   def index
     @delivery_address = DeliveryAddress.new
-    @delivery_addresses = DeliveryAddress.all
+    @delivery_addresses = DeliveryAddress.where(customer_id: current_customer.id)
   end
 
   def edit
