@@ -22,7 +22,7 @@
         <% @cart_items.each do |cart_item| %>
           <tr>
             <td><%= image_tag cart_item.item.get_item_image(40,60) %><%= cart_item.item.name %></td>
-            <td><%= cart_item.item.with_tax_price * cart_item.item_quantity %></td>
+            <td><%= cart_item.item.with_tax_price %></td>
             <td>
               <%= form_with url: cart_item_path(cart_item.id), model: cart_item do |f| %>
                 <%= f.select :item_quantity, *[1..10] %>
@@ -49,8 +49,9 @@
             <th scope="row">合計金額</th>
             <td>
               <% @cart_items.each do |cart_item| %>
-                <% @total = cart_item.subtotal %>
+                <% @total += cart_item.subtotal %>
               <% end %>
+              <%= @total %>
             </td>
           </tr>
         </tbody>
@@ -63,13 +64,6 @@
         <% @cart_items.each do |cart_item| %>
           <%= f.hidden_field :id, :value => cart_item.id %>
           <%= f.hidden_field :customer_id, :value => current_customer.id %>
-          <%= f.hidden_field :select_post_code, :value => nil %>
-          <%= f.hidden_field :select_address, :value => nil %>
-          <%= f.hidden_field :select_receiver, :value => nil %>
-          <%= f.hidden_field :postage, :value => 0 %>
-          <%= f.hidden_field :billing_amount, :value => 0 %>
-          <%= f.hidden_field :payment_method, :value => 0 %>
-          <%= f.hidden_field :order_status, :value => 0 %>
         <% end %>
         <%= f.submit '情報入力に進む', class: "btn btn-sm btn-success" %>
       <% end %>

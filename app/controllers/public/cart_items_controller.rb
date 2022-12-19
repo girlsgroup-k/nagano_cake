@@ -1,6 +1,7 @@
 class Public::CartItemsController < ApplicationController
   def index
     @cart_items = CartItem.all
+    @total = 0
     @order = Order.new
   end
 

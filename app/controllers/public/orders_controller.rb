@@ -7,13 +7,12 @@ class Public::OrdersController < ApplicationController
 
   def create
     order = Order.new(order_params)
-    order.save
     @cart_items = CartItem.all 
-    @cart_items.destroy_all
     redirect_to new_order_path
   end
 
   def success
+     @cart_items.destroy_all
   end
 
   def index
