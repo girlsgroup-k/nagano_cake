@@ -6,7 +6,6 @@ class Public::DeliveryAddressesController < ApplicationController
 
   def edit
     @delivery_address = DeliveryAddress.find(params[:id])
-    delivery_address = @delivery_address.id
   end
 
   def create
@@ -18,9 +17,9 @@ class Public::DeliveryAddressesController < ApplicationController
   end
 
   def update
-    @delivery_address.customer_id = current_customer.id
+    @delivery_address = DeliveryAddress.find(params[:id])
     if @delivery_address.update(delivery_address_params)
-      redirect_to delivery_address_path
+      redirect_to delivery_addresses_path
     else
       render edit_delivery_address_path
     end
