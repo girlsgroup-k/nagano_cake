@@ -3,7 +3,6 @@
 <%= link_to "＋ボタン", new_admin_item_path %>
 
 <table>
-    <% @items.each do |items| %>
     <thead>
         <tr>
           <th>商品ID</th>
@@ -13,6 +12,9 @@
           <th></th>
           <th>ステータス</th>
         </tr>
+    </thead>
+    <tbody>
+      <% @items.each do |items| %>
         <tr>
           <td><%= item.id %></td>
           <td><%= item.name %></td>
@@ -21,8 +23,8 @@
           <td></td>
           <td><%= item.is_active %></td>
         </tr>
-    </thead>
-    <% end %>
+       <% end %>
+    </tbody>
 </table>
 
 <%= paginate @items %>
