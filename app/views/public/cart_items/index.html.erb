@@ -60,11 +60,12 @@
   </div>
   <div class="row">
     <div class="col">
-      <%= form_with model: @order, url: orders_path do |f| %>
+      <%= form_with model: @order, url: new_order_path, method: :get do |f| %>
         <% @cart_items.each do |cart_item| %>
           <%= f.hidden_field :id, :value => cart_item.id %>
           <%= f.hidden_field :customer_id, :value => current_customer.id %>
         <% end %>
+        <%= f.hidden_field :billing_amount, :value => @total %>
         <%= f.submit '情報入力に進む', class: "btn btn-sm btn-success" %>
       <% end %>
     </div>
