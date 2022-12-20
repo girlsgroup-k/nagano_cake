@@ -1,2 +1,68 @@
-<h1>Public::Orders#check</h1>
-<p>Find me in app/views/public/orders/check.html.erb</p>
+<div class="container">
+<%= form_with model: @order, method: :post do |f| %>
+    <div class="row">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>単価(税込)</th>
+            <th>数量</th>
+            <th>小計</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @cart_items.each do |cart_item| %>
+            <tr>
+              <td>
+                <%= image_tag cart_item.item.get_item_image(40,60) %><%= cart_item.item.name %>
+              </td>
+              <td><%= cart_item.item.with_tax_price %></td>
+              <td>
+                <%= cart_item.item_quantity %>
+              </td>
+              <td><%= cart_item.subtotal %></td>
+            </tr>
+          <% end %>
+        <tbody>
+      </table>
+      <table class="table table table-bordered">
+        <tbody>
+          <tr scope="row">
+            <th>送料</th>
+            <th>合計金額</th>
+            <th>請求金額</th>
+            <td>
+              <%= @order.postage %>
+            </td>
+            <td>
+            </td>
+            <td>
+              <%= @total + @order.postage %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="row">
+      <br>支払方法</br>
+      <%= @order.payment_method %>
+    </div>
+    <div class="row">
+      <br>お届け先</br>
+      <%= @order.select_post_code %>
+      <%= @order.select_address %>
+      <%= @order.select_receiver %>
+    </div>
+    <div class="row">
+      <%= f.hidden_field :customer_id, :value => current_customer.id %>
+      <%= f.hidden_field :postage, :value => @order.postage %>
+      <%= f.hidden_field :billing_amount, :value => @total + @order.postage %>
+      <%= f.hidden_field :select_post_code, :value => @order.select_post_code %>
+      <%= f.hidden_field :select_address, :value => @order.select_address %>
+      <%= f.hidden_field :select_receiver, :value => @order.select_receiver %>
+      <%= f.hidden_field :payment_method, :value => @order.payment_method %>
+      <%= f.hidden_field :order_status, :value => 0 %>
+      <%= f.submit '注文を確定する', class: "btn btn-sm btn-success" %>
+    </div>
+  <% end %>
+</div>
