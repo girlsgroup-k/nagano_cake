@@ -5,4 +5,5 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :delivery_addresses, foreign_key: :delivery_address_id, dependent: :destroy
   has_many :cart_items
+  has_many :orders
 end
