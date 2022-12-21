@@ -1,7 +1,11 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <%= image_tag @item.get_item_image(100,100) %>
+      <% if @item.item_image.attached? %>
+        <%= image_tag @item.get_item_image(100,100) %>
+      <% else %>
+        <%= image_tag 'no_image', size: "100x100" %>
+      <% end %>
       <%= @item.name %>
       <%= @item.detail %>
       <%= @item.tax_exclusive_price %>

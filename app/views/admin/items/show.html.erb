@@ -1,16 +1,25 @@
-<h1>Admin::Items#show</h1>
-<p>Find me in app/views/admin/items/show.html.erb</p>
 <div class="container">
   <div class="row">
     <div class="col-7">
       <h3>商品詳細</h3>
       <div class="row g-3 align-items-center">
+        <% if @item.item_image.attached? %>
+          <%= image_tag @item.get_item_image(100,100) %>
+        <% else %>
+          <%= image_tag 'no_image', size: "100x100" %>
+        <% end %>
         商品名 <%= @item.name %>
         商品説明 <%= @item.detail %>
-        ジャンル <%= @item.genre.id %>
-        税込価格 <%= @item.tax_exclusive_price %>
-        （税抜価格） <%= @item.tax_included_price %>
-        販売ステータス <%= @item.is_active %>
+        ジャンル <%= @item.genre.name %>
+        税込価格 <%= (@item.tax_exclusive_price* 1.1).floor %>
+        （税抜価格） <%= @item.tax_exclusive_price %>
+        販売ステータス 
+        <% if @item.is_active == false %>
+          <strong class="text-black-50">販売停止中</strong>
+        <% else %>
+          <strong class="text-success">販売中</strong>
+        <% end %>
+        <%= link_to "編集する", edit_admin_item_path, class: "btn btn-success" %>
       </div>
     </div>
   </div>
