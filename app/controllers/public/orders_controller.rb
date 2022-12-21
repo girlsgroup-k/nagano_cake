@@ -37,6 +37,7 @@ class Public::OrdersController < ApplicationController
     @cart_items.destroy_all
     redirect_to orders_success_path
     
+
   end
 
   def success
@@ -47,10 +48,11 @@ class Public::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @order_details = @order.order_details.all
   end
-  
+
   private
-  
+
   def order_params
     params.require(:order).permit(:customer_id, :select_post_code, :select_address, :select_receiver, :postage, :billing_amount, :payment_method, :order_status)
   end
