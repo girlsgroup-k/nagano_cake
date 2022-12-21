@@ -44,6 +44,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+    @orders = Order.where(customer_id: current_customer.id)
+    @order_details = OrderDetail.where(order_id: @orders.ids)
   end
 
   def show
