@@ -4,3 +4,9 @@ ja:
       payment_method:
         credit_card: "クレジットカード"
         transfer: "銀行振込"
+    order_detail:
+      production_status:
+        not_allowed: "着手不可"
+        pending_production: "製作待ち"
+        in_production: "製作中"
+        production_completed: "製作完了"
