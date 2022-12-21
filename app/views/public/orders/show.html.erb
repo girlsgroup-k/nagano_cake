@@ -3,7 +3,7 @@
     <h1>注文履歴詳細</h1>
     <div class="col">
       <span>注文情報</span>
-        <table class="table order-show-table">
+        <table class="table table-bordered">
           <tbody>
             <tr>
               <td class="active">注文日</td>
@@ -30,7 +30,7 @@
     </div>
     <div class="col">
       <span>請求情報</span>
-      <table class="table order-show-table">
+      <table class="table table-bordered">
         <tbody>
           <tr>
             <td class="active">商品合計</td>
@@ -43,14 +43,13 @@
           <tr>
             <td>ご請求額</td>
             <td><%= @order.billing_amount %></td>
-
           </tr>
         </tbody>
       </table>
     </div>
   </div>
   <div class="col">
-    <table class="table order-show-table">
+    <table class="table table-bordered">
       <thead>
         <tr>
           <th>商品</th>

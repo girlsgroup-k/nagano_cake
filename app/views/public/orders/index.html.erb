@@ -28,7 +28,7 @@
             </td>
             <td><%= order_detail.item.name %></td>
             <td><%= order_detail.order.billing_amount.to_i + order_detail.order.postage.to_i %>円</td>
-            <td><%= order_detail.production_status %></td>
+            <td><%= order_detail.production_status_i18n %></td>
             <td>
                <%= link_to "表示する", order_path(order_detail.id), class: "btn btn-primary" %>
             </td>
