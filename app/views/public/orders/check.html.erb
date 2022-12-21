@@ -35,6 +35,10 @@
               <%= @order.postage %>
             </td>
             <td>
+              <% @cart_items.each do |cart_item| %>
+                <% @total += cart_item.subtotal %>
+              <% end %>
+              <%= @total %>
             </td>
             <td>
               <%= @total + @order.postage %>
@@ -45,7 +49,7 @@
     </div>
     <div class="row">
       <br>支払方法</br>
-      <%= @order.payment_method %>
+      <%= @order.payment_method_i18n %>
     </div>
     <div class="row">
       <br>お届け先</br>
