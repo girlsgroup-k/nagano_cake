@@ -5,6 +5,7 @@ class Item < ApplicationRecord
   has_many :order_details
   
   
+ 
   def get_item_image(width, height)
     item_image.variant(resize_to_limit: [width, height]).processed
   end
@@ -12,4 +13,5 @@ class Item < ApplicationRecord
   def with_tax_price
     (tax_exclusive_price * 1.1).floor
   end
+  
 end

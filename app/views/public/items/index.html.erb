@@ -13,10 +13,14 @@
 <h4>商品一覧</h4><h6>(全 <%= @items.count %> 件)</h6>
 <table>
   <tbody>
-    <% @items.each do |items| %>
-      <tr><%= item.item_image %></tr>
-      <tr><%= item.name %></tr>
-      <tr><%= @item.with_tax_price %></tr>
+    <% @items.each do |item| %>
+      <% if item.item_image.attached? %>
+        <tr><%= image_tag item.get_item_image(200,200) %></tr>
+      <% else %>
+        <%= image_tag 'no_image', size: "200x200" %>
+      <% end %>
+     <tr><%= link_to item.name, item_path(item.id) %></tr>
+      <tr>￥<%= item.with_tax_price %></tr>
      <% end %>
   </tbody>
 </table>

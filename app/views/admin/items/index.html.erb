@@ -17,11 +17,17 @@
       <% @items.each do |item| %>
         <tr>
           <td><%= item.id %></td>
-          <td><%= item.name %></td>
+          <td><%= link_to item.name, admin_item_path(item.id) %></td>
           <td><%= item.tax_exclusive_price %></td>
-          <td><%= item.genre.id %></td> 
+          <td><%= item.genre.name %></td> 
           <td></td>
-          <td><%= item.is_active %></td>
+          <td>
+            <% if @item.is_active == false %>
+              <strong class="text-black-50">販売停止中</strong>
+            <% else %>
+              <strong class="text-success">販売中</strong>
+            <% end %>
+          </td>
         </tr>
        <% end %>
     </tbody>
