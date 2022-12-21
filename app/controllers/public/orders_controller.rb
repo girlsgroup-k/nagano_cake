@@ -24,7 +24,7 @@ class Public::OrdersController < ApplicationController
   end
   def create
     @order = Order.new(order_params)
-    @order.save
+    @order.save!
     @cart_items = CartItem.where(customer_id: current_customer.id)
     @cart_items.each do |cart_item|
       @order_detail = OrderDetail.new
@@ -32,7 +32,7 @@ class Public::OrdersController < ApplicationController
       @order_detail.item_id = cart_item.item_id
       @order_detail.tax_included_price = cart_item.item.tax_exclusive_price * 1.1
       @order_detail.quantity = cart_item.item_quantity
-      @order_detail.save!
+      @order_detail.save
     end
     @cart_items.destroy_all
     redirect_to orders_success_path
