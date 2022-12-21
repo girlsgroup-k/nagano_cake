@@ -16,8 +16,8 @@ class Public::OrdersController < ApplicationController
       @order.select_receiver = @address.name
     elsif params[:order][:address_option] == "2"
       
-    
     else
+      render :new
     end
     @cart_items = CartItem.all
     @total = 0

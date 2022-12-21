@@ -35,6 +35,10 @@
               <%= @order.postage %>
             </td>
             <td>
+              <% @cart_items.each do |cart_item| %>
+                <% @total += cart_item.subtotal %>
+              <% end %>
+              <%= @total %>
             </td>
             <td>
               <%= @total + @order.postage %>
@@ -44,14 +48,20 @@
       </table>
     </div>
     <div class="row">
-      <br>支払方法</br>
-      <%= @order.payment_method %>
+      <b>支払方法</b>
+      <%= @order.payment_method_i18n %>
     </div>
     <div class="row">
-      <br>お届け先</br>
-      <%= @order.select_post_code %>
-      <%= @order.select_address %>
-      <%= @order.select_receiver %>
+      <b>お届け先</b>
+      <div class="customer_address">
+        <div>
+          <%= "〒" + @order.select_post_code %>
+          <%= @order.select_address %>
+        </div>
+        <div>
+          <%= @order.select_receiver %>
+        </div>
+      </div>
     </div>
     <div class="row">
       <%= f.hidden_field :customer_id, :value => current_customer.id %>
