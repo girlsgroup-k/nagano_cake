@@ -1,6 +1,25 @@
 <div class="container">
   <h2>注文履歴詳細</h2>
   <div class="row">
-    
+    <div>
+      <b class="col">購入者</b>
+      <div class="col-sm-3"><%= @order_detail.order.customer.first_name %></div>
+    </div>
+    <div>
+      <b class="col">注文日</b>
+      <div class="col-sm-3"><%= @order_detail.created_at.strftime("%Y/%m/%d") %></div>
+    </div>
+    <div>
+      <b class="col">配送先</b>
+      <div class="col-sm-3"><%= @order_detail.order.select_post_code %></div>
+    </div>
+    <div>
+      <b class="col">支払方法</b>
+      <div class="col-sm-3"><%= @order_detail. %></div>
+    </div>
+    <div>
+      <b class="col">注文ステータス</b>
+      <div class="col-sm-3"><%= @order_detail. %></div>
+    </div>
   </div>
 </div>
