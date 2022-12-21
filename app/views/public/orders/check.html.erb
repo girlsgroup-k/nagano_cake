@@ -64,6 +64,7 @@
       </div>
     </div>
     <div class="row">
+       <%= f.hidden_field :order_id, :value => @order.id %>
       <%= f.hidden_field :customer_id, :value => current_customer.id %>
       <%= f.hidden_field :postage, :value => @order.postage %>
       <%= f.hidden_field :billing_amount, :value => @total + @order.postage %>
