@@ -15,7 +15,7 @@ class Public::OrdersController < ApplicationController
       @order.select_address = @address.address
       @order.select_receiver = @address.name
     elsif params[:order][:address_option] == "2"
-      
+
     else
       render :new
     end
@@ -36,7 +36,7 @@ class Public::OrdersController < ApplicationController
     end
     @cart_items.destroy_all
     redirect_to orders_success_path
-    
+
 
   end
 
@@ -58,7 +58,7 @@ class Public::OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:customer_id, :select_post_code, :select_address, :select_receiver, :postage, :billing_amount, :payment_method, :order_status)
   end
-  
+
   def order_detail_params
     params.require(:order_detail).permit(:id, :order_id, :item_id, :tax_included_price, :quantity, :production_status)
   end
