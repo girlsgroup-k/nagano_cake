@@ -32,7 +32,7 @@ class Public::OrdersController < ApplicationController
       @order_detail.item_id = cart_item.item_id
       @order_detail.tax_included_price = cart_item.item.tax_exclusive_price * 1.1
       @order_detail.quantity = cart_item.item_quantity
-      @order_detail.save!
+      @order_detail.save
     end
     @cart_items.destroy_all
     redirect_to orders_success_path
@@ -44,6 +44,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+    @orders = Order.where(customer_id: current_customer.id)
+    @order_details = OrderDetail.where(order_id: @orders.ids)
   end
 
   def show
