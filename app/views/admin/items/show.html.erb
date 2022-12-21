@@ -12,7 +12,7 @@
         商品説明 <%= @item.detail %>
         ジャンル <%= @item.genre.name %>
         税込価格 <%= (@item.tax_exclusive_price* 1.1).floor %>
-        （税抜価格） <%= @item.tax_exclusive_price %>
+        <tr>（税抜価格） <%= @item.tax_exclusive_price %>円 </tr>
         販売ステータス 
         <% if @item.is_active == false %>
           <strong class="text-black-50">販売停止中</strong>
