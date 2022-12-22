@@ -1,37 +1,18 @@
 <div class="container">
-<<<<<<< HEAD
-<<<<<<< HEAD
 <h2>管理者ログイン</h2>
-
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com" %>
-=======
-=======
->>>>>>> origin/develop
   <div class="row">
-     <div class="col-auto">
-       <h4>管理者ログイン</h4>
-     </div>
-<<<<<<< HEAD
->>>>>>> origin/develop
-=======
->>>>>>> origin/develop
-  </div>
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="row">
-      <div class="col-auto">
-        <div class="field">
-          <%= f.label "メールアドレス" %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com" %>
-        </div>
+    <div class="col-auto">
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com" %>
       </div>
     </div>
+  </div>
     <div class="row">
       <div class="col-auto">
         <div class="field">
-          <%= f.label "パスワード" %>
+          <%= f.label "パスワード" %><br />
           <%= f.password_field :password, autocomplete: "current-password" %>
         </div>
       </div>
@@ -43,21 +24,6 @@
         </div>
       </div>
     </div>
-  <% end %>
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-  <div class="actions">
-    <%= f.submit "サインイン", class: "btn btn-primary" %>
-  </div>
 <% end %>
-=======
-</div>
->>>>>>> origin/develop
-=======
-</div>
-
->>>>>>> origin/develop
-
 <%= render "admin/shared/links" %>
 </div>
