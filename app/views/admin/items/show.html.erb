@@ -5,11 +5,7 @@
     </div>
   </div>
   <div class="row g-3 align-items-center">
-    <% if @item.item_image.attached? %>
       <%= image_tag @item.get_item_image(200,200) %>
-    <% else %>
-      <%= image_tag 'no_image', size: "200x200" %>
-    <% end %>
     <table>
       <tr>
         <th>商品名</th>
