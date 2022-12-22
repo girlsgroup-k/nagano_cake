@@ -18,8 +18,8 @@ ja:
         production_completed: "製作完了"
   views:
     pagination:
-      first: "&laquo; 最初"
-      last: "最後 &raquo;"
-      next: "次 &rsaquo;"
-      previous: "&lsaquo; 前"
+      first: "&laquo; First"
+      last: "Last &raquo;"
+      next: "Nest &rsaquo;"
+      previous: "&lsaquo; Prev"
       truncate: "&hellip;"
