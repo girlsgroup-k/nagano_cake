@@ -19,11 +19,16 @@
     </div>
     <div>
       <b class="col">支払方法</b>
-      <div class="col-sm-3"><%= @order.payment_method %></div>
+      <div class="col-sm-3"><%= @order.payment_method_i18n %></div>
     </div>
     <div>
       <b class="col">注文ステータス</b>
-      <div class="col-sm-3"><%= @order.order_status %></div>
+      <div class="col-sm-3">
+        <%= form_with url: admin_order_path(@order.id), model: @order do |f| %>
+          <%= f.select :order_status, Order.order_statuses_i18n.keys.map {|k| [I18n.t("enums.order.order_status.#{k}"), k]} %>
+          <%= f.submit "変更", class: "btn btn-success" %>
+        <% end %>
+      </div>
     </div>
   </div>
   <div class="row">
@@ -48,10 +53,10 @@
               <%= order_detail.order.select_receiver %>
             </td>
             <td><%= order_detail.quantity %></td>
-            <td><%= order_detail.order.billing_amount.to_i + order_detail.order.postage.to_i %>円</td>
+            <td><%= order_detail.tax_included_price + order_detail.quantity %>円</td>
             <%= form_with url: admin_order_detail_path(order_detail.id), model: order_detail do |f| %>
               <td>
-                <%= f.select :production_status, order_detail.production_status, :role, :payment_methods_i18n %>
+                <%= f.select :production_status, OrderDetail.production_statuses_i18n.keys.map {|k| [I18n.t("enums.order_detail.production_status.#{k}"), k]} %>
               </td>
               <td>
                  <%= f.submit "変更", class: "btn btn-success" %>
@@ -59,7 +64,6 @@
             <% end %>
           </tr>
         <% end %>
-      <%= @total %>
       </tbody>
     </table>
   </div>

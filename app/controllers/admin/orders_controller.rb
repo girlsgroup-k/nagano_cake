@@ -10,4 +10,10 @@ class Admin::OrdersController < ApplicationController
     @order_detail = OrderDetail.find(params[:id])
     redirect_to order_path
   end
+  
+  private
+  
+  def order_params
+    params.require(:order).permit(:order_status)
+  end
 end
