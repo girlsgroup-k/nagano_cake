@@ -18,19 +18,19 @@
         </tr>
       </thead>
       <tbody>
-        <% @order_details.each do |order_detail| %>
+        <% @orders.each do |order| %>
           <tr>
-            <td><%= order_detail.created_at.strftime("%Y/%m/%d") %></td>
+            <td><%= order.created_at.strftime("%Y/%m/%d") %></td>
             <td>
-              <%= "〒" + order_detail.order.select_post_code %>
-              <%= order_detail.order.select_address %>
-              <%= order_detail.order.select_receiver %>
+              <%= "〒" + order.select_post_code %>
+              <%= order.select_address %>
+              <%= order.select_receiver %>
             </td>
-            <td><%= order_detail.item.name %></td>
-            <td><%= order_detail.order.billing_amount.to_i + order_detail.order.postage.to_i %>円</td>
-            <td><%= order_detail.production_status_i18n %></td>
+            <td></td>
+            <td><%= order.order_detail.order.billing_amount.to_i + order.order_detail.order.postage.to_i %>円</td>
+            <td><%= order.order_status_i18n %></td>
             <td>
-               <%= link_to "表示する", order_path(order_detail.id), class: "btn btn-primary" %>
+               <%= link_to "表示する", order_path(order.id), class: "btn btn-primary" %>
             </td>
           </tr>
         <% end %>
