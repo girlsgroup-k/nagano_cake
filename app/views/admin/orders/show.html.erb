@@ -3,23 +3,64 @@
   <div class="row">
     <div>
       <b class="col">購入者</b>
-      <div class="col-sm-3"><%= @order_detail.order.customer.first_name %></div>
+      <div class="col-sm-3"><%= @order.customer.first_name %></div>
     </div>
     <div>
       <b class="col">注文日</b>
-      <div class="col-sm-3"><%= @order_detail.created_at.strftime("%Y/%m/%d") %></div>
+      <div class="col-sm-3"><%= @order.created_at.strftime("%Y/%m/%d") %></div>
     </div>
     <div>
       <b class="col">配送先</b>
-      <div class="col-sm-3"><%= @order_detail.order.select_post_code %></div>
+      <div class="col-sm-3">
+        <%= @order.select_post_code %>
+        <%= @order.select_address %><br>
+        <%= @order.select_receiver %>
+      </div>
     </div>
     <div>
       <b class="col">支払方法</b>
-      <div class="col-sm-3"><%= @order_detail. %></div>
+      <div class="col-sm-3"><%= @order.payment_method %></div>
     </div>
     <div>
       <b class="col">注文ステータス</b>
-      <div class="col-sm-3"><%= @order_detail. %></div>
+      <div class="col-sm-3"><%= @order.order_status %></div>
     </div>
+  </div>
+  <div class="row">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>商品名</th>
+          <th>単価</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th>製作ステータス</th>
+          <th colspan="1"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @order_details.each do |order_detail| %>
+          <tr>
+            <td><%= order_detail.item.name %></td>
+            <td>
+              <%= "〒" + order_detail.order.select_post_code %>
+              <%= order_detail.order.select_address %>
+              <%= order_detail.order.select_receiver %>
+            </td>
+            <td><%= order_detail.quantity %></td>
+            <td><%= order_detail.order.billing_amount.to_i + order_detail.order.postage.to_i %>円</td>
+            <%= form_with url: admin_order_detail_path(order_detail.id), model: order_detail do |f| %>
+              <td>
+                <%= f.select :production_status, order_detail.production_status, :role, :payment_methods_i18n %>
+              </td>
+              <td>
+                 <%= f.submit "変更", class: "btn btn-success" %>
+              </td>
+            <% end %>
+          </tr>
+        <% end %>
+      <%= @total %>
+      </tbody>
+    </table>
   </div>
 </div>
