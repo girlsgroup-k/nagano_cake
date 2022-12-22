@@ -44,27 +44,24 @@
         </tr>
       </thead>
       <tbody>
-        <% @order_details.each do |order_detail| %>
-          <tr>
-            <td><%= order_detail.item.name %></td>
-            <td>
-              <%= "〒" + order_detail.order.select_post_code %>
-              <%= order_detail.order.select_address %>
-              <%= order_detail.order.select_receiver %>
-            </td>
-            <td><%= order_detail.quantity %></td>
-            <td><%= order_detail.tax_included_price + order_detail.quantity %>円</td>
-            <%= form_with url: admin_order_detail_path(order_detail.id), model: order_detail do |f| %>
-              <td>
-                <%= f.select :production_status, OrderDetail.production_statuses_i18n.keys.map {|k| [I18n.t("enums.order_detail.production_status.#{k}"), k]} %>
-              </td>
-              <td>
-                 <%= f.submit "変更", class: "btn btn-success" %>
-              </td>
-            <% end %>
-          </tr>
-        <% end %>
       </tbody>
     </table>
   </div>
 </div>
+        <% @order_details.each do |order_detail| %>
+          <%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id) do |f| %>
+            
+              <%= order_detail.item.name %>
+              
+                <%= "〒" + order_detail.order.select_post_code %>
+                <%= order_detail.order.select_address %>
+                <%= order_detail.order.select_receiver %>
+              
+              <%= order_detail.quantity %>
+              <%= order_detail.tax_included_price + order_detail.quantity %>円
+              
+                <%= f.select :production_status, OrderDetail.production_statuses_i18n.keys.map {|k| [I18n.t("enums.order_detail.production_status.#{k}"), k]} %>
+          
+                 <%= f.submit "変更", class: "btn btn-success" %>
+          <% end %>
+        <% end %>
