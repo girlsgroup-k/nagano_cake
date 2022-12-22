@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    <h1>注文履歴詳細</h1>
     <div class="col">
+    <h1>注文履歴詳細</h1>
       <span>注文情報</span>
         <table class="table table-bordered">
           <tbody>
@@ -47,27 +47,27 @@
         </tbody>
       </table>
     </div>
-  </div>
-  <div class="col">
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th>商品</th>
-          <th>単価（税込）</th>
-          <th>個数</th>
-          <th>小計</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @order_details.each do |order_detail| %>
+    <div class="col">
+      <table class="table table-bordered">
+        <thead>
           <tr>
-            <td><%= order_detail.item_id %></td>
-            <td><%= order_detail.tax_included_price %></td>
-            <td><%= order_detail.quantity %></td>
-            <td><%= order_detail.tax_included_price * order_detail.quantity %></td>
+            <th>商品</th>
+            <th>単価（税込）</th>
+            <th>個数</th>
+            <th>小計</th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <% @order_details.each do |order_detail| %>
+            <tr>
+              <td><%= order_detail.item_id %></td>
+              <td><%= order_detail.tax_included_price %></td>
+              <td><%= order_detail.quantity %></td>
+              <td><%= order_detail.tax_included_price * order_detail.quantity %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
