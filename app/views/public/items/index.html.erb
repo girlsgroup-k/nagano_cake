@@ -1,29 +1,25 @@
-<table>
-  <thead>
-    <tr><th>ジャンル検索</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>ケーキ</td></tr>
-    <tr><td>焼き菓子</td></tr>
-    <tr><td>プリン</td></tr>
-    <tr><td>キャンディ</td></tr>
-  </tbody>
-</table>
-
-<h4>商品一覧</h4><h6>(全 <%= @items.count %> 件)</h6>
-<table>
-  <tbody>
-    <% @items.each do |item| %>
-      <% if item.item_image.attached? %>
-        <tr><%= image_tag item.get_item_image(200,200) %></tr>
-      <% else %>
-        <%= image_tag 'no_image', size: "200x200" %>
-      <% end %>
-     <tr><%= link_to item.name, item_path(item.id) %></tr>
-      <tr>￥<%= item.with_tax_price %></tr>
-     <% end %>
-  </tbody>
-</table>
-
-<%= paginate @items %>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <div>ジャンル検索</div>
+      <div>ケーキ</div>
+      <div>焼き菓子</div>
+      <div>プリン</div>
+      <div>キャンディ</div>
+    </div>
+    <div class="col-9">
+      <h4>商品一覧</h4><h6>(全 <%= Item.count %> 件)</h6>
+      <div class ="d-flex flex-row flex-wrap">
+        <% @items.each do |item| %>
+          <div class="col-md-3">
+            <%= image_tag item.get_item_image(150,100) %><br>
+            <%= link_to item.name, item_path(item.id) %><br>
+            ￥<%= item.with_tax_price %><br>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <%= paginate @items %>
+  </div>
+</div>
 
