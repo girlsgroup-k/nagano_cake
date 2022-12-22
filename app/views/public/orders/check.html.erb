@@ -72,7 +72,6 @@
       <%= f.hidden_field :select_address, :value => @order.select_address %>
       <%= f.hidden_field :select_receiver, :value => @order.select_receiver %>
       <%= f.hidden_field :payment_method, :value => @order.payment_method %>
-      <%= f.hidden_field :order_status, :value => 0 %>
       <%= f.submit '注文を確定する', class: "btn btn-sm btn-success" %>
     </div>
   <% end %>
