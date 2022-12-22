@@ -8,7 +8,7 @@ class Admin::OrdersController < ApplicationController
     order = Order.find(params[:id])
     order.update(order_params)
     @order_detail = OrderDetail.find(params[:id])
-    redirect_to order_path
+    redirect_to admin_order_path
   end
   
   private
