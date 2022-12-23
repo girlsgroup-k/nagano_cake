@@ -1,30 +1,32 @@
 <div class="container">
   <div class="row mb-3">
-    <div class="col lg-6">
-      <h4>ログイン</h4>
+    <div class="col">
+      <h4 class="ml-5">ログイン</h4>
     </div>
   </div>
-  <div class="row mb-3">
-    <div class="col-4 ml-2">
+  <div class="row mb-4">
+    <div class="col-md-3 offset-md-1">
       会員の方はこちらからログイン
     </div>
   </div>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="row justify-content-center">
-        <div class="field">
-          <label>メールアドレス</label>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-        </div>
+  <div class="row">
+    <div class="col-md-5 offset-md-2">
+      <div class="field">
+        <label class="col-md-4 offset-md-2">メールアドレス</label>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
+    </div>
   </div>
-   <div class="row justify-content-center">
-    <div class="col-4 ml-2">  
+   <div class="row mb-3">
+    <div class="col-md-5 offset-md-2">  
         <div class="field">
-          <label>パスワード</label>
+          <label class="col-md-4 offset-md-2">パスワード</label>
           <%= f.password_field :password, autocomplete: "current-password" %>
         </div>
     </div>
   </div>       
-  <div class="row justify-content-center">
+  <div class="row justify-content-center mb-5">
      <div class="col-4 ml-2">
       <div class="actions">
         <%= f.submit "ログイン", class: "btn btn-primary" %>
@@ -32,13 +34,13 @@
     </div>
   </div>
         <% end %>
-  <div class="row mb-5">
-    <div class="col-4 ml-2">     
-      <p>会員登録がお済みでない方</p>
+  <div class="row mb-2">
+    <div class="col-md-3 offset-md-1">     
+      会員登録がお済みでない方
     </div>
   </div>
-  <div class="row mb-5">
-    <div class="col-4 ml-2">     
+  <div class="row mb-2">
+    <div class="col-md-4 offset-md-2">    
       <%= render "public/shared/links" %>
     </div>
   </div>
