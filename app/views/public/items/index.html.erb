@@ -4,18 +4,20 @@
       <%= render "public/shared/genre_search", genres: @genres %>
     </div>
     <div class="col-9">
-      <p class="h2">商品一覧<span class="h4">(全 <%= Item.count %> 件)</p>
+      <p class="h2 mb-3">商品一覧<span class="h4">(全 <%= Item.count %> 件)</p>
       <div class ="d-flex flex-row flex-wrap">
         <% @items.each do |item| %>
-          <div class="col-md-3">
-            <%= image_tag item.get_item_image(150,100) %><br>
-            <%= link_to item.name, item_path(item.id) %><br>
+          <div class="col-md-3 mb-3">
+            <div class= "mb-1"><%= image_tag item.get_item_image(150,100) %></div>
+            <div class= "mb-1"><%= link_to item.name, item_path(item.id) %></div>
             ￥<%= item.with_tax_price %><br>
           </div>
         <% end %>
       </div>
     </div>
-    <%= paginate @items %>
+  </div>
+  <div class="row">
+    <div class="col-md-6 offset-md-6"><%= paginate @items %></div>
   </div>
 </div>
 
