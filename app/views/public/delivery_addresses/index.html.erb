@@ -1,31 +1,68 @@
-<h4>配送先登録/一覧</h4>
-
-<%= form_with model: @delivery_address do |f| %>
-  <h6>郵便番号(ハイフンなし)</h6>
-    <%= f.text_field :post_code, placeholder: "0000000" %>
-  <h6>住所</h6>
-    <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町０－０" %>
-  <h6>宛名</h6>
-    <%= f.text_field :name, placeholder: "令和道子" %>
-  <%= f.submit '新規登録', class: "btn btn-success" %>
-<% end %>
-
-<table>
-    <thead>
-        <tr>
-            <th>郵便番号</th>
-            <th>住所</th>
-            <th>宛名</th>
-            <th></th>
-        </tr>
-        <% @delivery_addresses.each do |delivery_address| %>
-          <tr>
-            <td><%= delivery_address.post_code %></td>
-            <td><%= delivery_address.address %></td>
-            <td><%= delivery_address.name %></td>
-            <td><%= link_to "編集する", edit_delivery_address_path(delivery_address), class: "btn btn-success" %></td>
-            <td><%= link_to "削除する", delivery_address_path(delivery_address), method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-danger"  %></td>
+<div class="container">
+  <div class="row">
+    <h4 class="ml-5 mb-4">配送先登録/一覧</h4>
+  </div>
+  <%= form_with model: @delivery_address do |f| %>
+  <div class="row">
+    <div class="col">
+      <div class="row">
+        <div class="col-3">
+          <p>郵便番号(ハイフンなし)</p>
+        </div>
+        <div class="col-6">
+          <%= f.text_field :post_code, placeholder: "0000000" %>
+        </div>
+        <div class="col-3"></div>
+      </div>
+      <div class="row">
+        <div class="col-3">
+          <p>住所</p>
+        </div>
+        <div class="col-6">
+          <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町０－０", size: :"65" %>
+        </div>
+        <div class="col-3"></div>
+      </div>
+      <div class="row">
+        <div class="col-3">
+          <p>宛名</p>
+        </div>
+        <div class="col-6">
+          <%= f.text_field :name, placeholder: "令和道子" %>
+        </div>
+        <div class="col-3">
+          <%= f.submit '新規登録', class: "btn btn-success", style: "width:100px" %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+  <div class="row mt-5">
+    <div class="col-9">
+      <table class="table table-bordered h6">
+        <thead>
+          <tr class="table-active">
+            <td style="width: 10%" class="align-middle">郵便番号</td>
+            <td style="width: 35%" class="align-middle">住所</td>
+            <td style="width: 10%" class="align-middle">宛名</td>
+            <td style="width: 25%" colspan="1"></td>
           </tr>
-        <% end %>
-    </thead>
-</table>
+        </thead>
+        <tbody class="table-sm">
+          <% @delivery_addresses.each do |delivery_address| %>
+            <tr>
+              <td class="align-middle"><%= delivery_address.post_code %></td>
+              <td class="align-middle"><%= delivery_address.address %></td>
+              <td class="align-middle"><%= delivery_address.name %></td>
+              <td class="align-middle text-center">
+                <%= link_to "編集する", edit_delivery_address_path(delivery_address), class: "btn btn-success mr-2" %>
+                <%= link_to "削除する", delivery_address_path(delivery_address), method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-danger"  %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-3"></div>
+  </div>
+</div>
