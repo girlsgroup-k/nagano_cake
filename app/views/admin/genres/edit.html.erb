@@ -1,4 +1,17 @@
 <div class="container">
+  <h4 class="ml-5">ジャンル編集</h4>
+  <div class="row my-5">
+        <%= form_with model: @genre, url: admin_genres_path, class: "row d-flex align-items-center" do |f| %>
+          <div class="col-md-3 mr-2">
+            <b>ジャンル名</b>
+          </div>
+          <%= f.text_field :name, placeholder: "ジャンル名", class: "col-md-6 mr-3" %>
+          <div class="col-md-1">
+            <%= f.submit '変更保存', class: "btn btn-lg btn-success" %>
+          </div>
+        <% end %>
+  </div>
+</div>
   <div class="row">
     <div class="col-7">
       <h3>ジャンル一覧・追加</h3>
