@@ -1,11 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-2">
-      <div>ジャンル検索</div>
-      <div>ケーキ</div>
-      <div>焼き菓子</div>
-      <div>プリン</div>
-      <div>キャンディ</div>
+      <%= render "public/shared/genre_search", genres: @genres %>
     </div>
     <div class="col-9">
       <p class="h2">商品一覧<span class="h4">(全 <%= Item.count %> 件)</p>
