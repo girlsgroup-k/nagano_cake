@@ -24,7 +24,7 @@ class Public::CustomersController < ApplicationController
     @customer = current_customer
   end
 
-  def update
+  def withdrawal
     @customer = Customer.find_by(email: current_customer.email)
     @customer.update(is_deleted: true)
     reset_session
