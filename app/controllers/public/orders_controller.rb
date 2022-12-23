@@ -21,7 +21,9 @@ class Public::OrdersController < ApplicationController
     end
     @cart_items = CartItem.all
     @total = 0
+    @amount_billed = 0
   end
+
   def create
     @order = Order.new(order_params)
     @order.save!
@@ -36,8 +38,6 @@ class Public::OrdersController < ApplicationController
     end
     @cart_items.destroy_all
     redirect_to orders_success_path
-
-
   end
 
   def success
