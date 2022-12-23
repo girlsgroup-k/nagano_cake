@@ -1,4 +1,5 @@
 class Public::CustomersController < ApplicationController
+
   def show
     @customer = current_customer
   end
@@ -24,6 +25,10 @@ class Public::CustomersController < ApplicationController
   end
 
   def withdrawal
+    @customer = Customer.find_by(email: current_customer.email)
+    @customer.update(is_deleted: true)
+    reset_session
+    redirect_to root_path
   end
 
   private
