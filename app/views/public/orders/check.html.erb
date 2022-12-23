@@ -14,7 +14,7 @@
           <% @cart_items.each do |cart_item| %>
             <tr>
               <td>
-                <%= image_tag cart_item.item.get_item_image(40,60) %><%= cart_item.item.name %>
+                <%= image_tag cart_item.item.get_item_image(60,40) %><%= cart_item.item.name %>
               </td>
               <td><%= cart_item.item.with_tax_price %></td>
               <td>
@@ -35,6 +35,10 @@
               <%= @order.postage %>
             </td>
             <td>
+              <% @cart_items.each do |cart_item| %>
+                <% @total += cart_item.subtotal %>
+              <% end %>
+              <%= @total %>
             </td>
             <td>
               <%= @total + @order.postage %>
@@ -44,16 +48,23 @@
       </table>
     </div>
     <div class="row">
-      <br>支払方法</br>
-      <%= @order.payment_method %>
+      <b>支払方法</b>
+      <%= @order.payment_method_i18n %>
     </div>
     <div class="row">
-      <br>お届け先</br>
-      <%= @order.select_post_code %>
-      <%= @order.select_address %>
-      <%= @order.select_receiver %>
+      <b>お届け先</b>
+      <div class="customer_address">
+        <div>
+          <%= "〒" + @order.select_post_code %>
+          <%= @order.select_address %>
+        </div>
+        <div>
+          <%= @order.select_receiver %>
+        </div>
+      </div>
     </div>
     <div class="row">
+       <%= f.hidden_field :order_id, :value => @order.id %>
       <%= f.hidden_field :customer_id, :value => current_customer.id %>
       <%= f.hidden_field :postage, :value => @order.postage %>
       <%= f.hidden_field :billing_amount, :value => @total + @order.postage %>
@@ -61,7 +72,6 @@
       <%= f.hidden_field :select_address, :value => @order.select_address %>
       <%= f.hidden_field :select_receiver, :value => @order.select_receiver %>
       <%= f.hidden_field :payment_method, :value => @order.payment_method %>
-      <%= f.hidden_field :order_status, :value => 0 %>
       <%= f.submit '注文を確定する', class: "btn btn-sm btn-success" %>
     </div>
   <% end %>

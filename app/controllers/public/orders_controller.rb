@@ -15,16 +15,16 @@ class Public::OrdersController < ApplicationController
       @order.select_address = @address.address
       @order.select_receiver = @address.name
     elsif params[:order][:address_option] == "2"
-      
-    
+
     else
+      render :new
     end
     @cart_items = CartItem.all
     @total = 0
   end
   def create
     @order = Order.new(order_params)
-    @order.save
+    @order.save!
     @cart_items = CartItem.where(customer_id: current_customer.id)
     @cart_items.each do |cart_item|
       @order_detail = OrderDetail.new
@@ -32,11 +32,11 @@ class Public::OrdersController < ApplicationController
       @order_detail.item_id = cart_item.item_id
       @order_detail.tax_included_price = cart_item.item.tax_exclusive_price * 1.1
       @order_detail.quantity = cart_item.item_quantity
-      @order_detail.save!
+      @order_detail.save
     end
     @cart_items.destroy_all
     redirect_to orders_success_path
-    
+
 
   end
 
@@ -44,6 +44,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+    @orders = Order.where(customer_id: current_customer.id)
   end
 
   def show
@@ -56,7 +57,7 @@ class Public::OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:customer_id, :select_post_code, :select_address, :select_receiver, :postage, :billing_amount, :payment_method, :order_status)
   end
-  
+
   def order_detail_params
     params.require(:order_detail).permit(:id, :order_id, :item_id, :tax_included_price, :quantity, :production_status)
   end

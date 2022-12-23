@@ -22,7 +22,8 @@ Rails.application.routes.draw do
     get 'customers/inormation/edit' => 'customers#edit', as: 'customers_edit'
     patch 'customers/update' => 'customers#update', as: 'customers_update'
     get 'customers/check' => 'customers#check', as: 'customers_check'
-    patch 'customers/withdrawal' => 'customers#withdrawal', as: 'customers_withdrawal'
+    resources :customers, only: [:update]
+    #patch 'customers/withdrawal' => 'customers#withdrawal', as: 'customers_withdrawal'
   end
 
   devise_for :admin, skip: [:registrations, :passwords], controllers: {

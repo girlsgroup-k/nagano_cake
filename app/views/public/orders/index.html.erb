@@ -1,2 +1,44 @@
-<h1>Public::Orders#index</h1>
-<p>Find me in app/views/public/orders/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2>注文履歴一覧</h2>
+    </div>
+  </div>
+  <div class="row">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>注文日</th>
+          <th>配送先</th>
+          <th>注文商品</th>
+          <th>支払金額</th>
+          <th>ステータス</th>
+          <th>注文詳細</th>
+          <th colspan="1"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @orders.each do |order| %>
+          <tr>
+            <td><%= order.created_at.strftime("%Y/%m/%d") %></td>
+            <td>
+              <%= "〒" + order.select_post_code %>
+              <%= order.select_address %>
+              <%= order.select_receiver %>
+            </td>
+            <td>
+              <% order.order_details.each do |order_detail| %>
+                <%= order_detail.item.name %>
+              <% end %>
+            </td>
+            <td><%= order.billing_amount.to_i %>円</td>
+            <td><%= order.order_status_i18n %></td>
+            <td>
+               <%= link_to "表示する", order_path(order.id), class: "btn btn-primary" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
