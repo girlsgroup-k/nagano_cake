@@ -1,20 +1,14 @@
 <div class="container">
   <div class="row">
-    <h3>商品一覧</h3>
-    <%= link_to "＋ボタン", new_admin_item_path %>
-   </div>
-      <table class="table">
-          <thead>
-              <tr>
-                <th>商品ID</th>
-                <th>商品名</th>
-                <th>税抜価格</th>
-                <th>ジャンル</th>
-                <th></th>
-                <th>ステータス</th>
-              </tr>
-          </thead>
-          <tbody>
+     <h4 class="ml-5">商品一覧</h4>
+    <%= link_to new_admin_item_path do %>
+      <button type="button" class="btn btn-light rounded-circle p-0 shadow" style="width:2rem;height:2rem;">＋</button>
+    <% end %>
+  </div>
+  
+  <div class="row">
+    
+  </div> 
             <% @items.each do |item| %>
               <tr>
                 <td><%= item.id %></td>
