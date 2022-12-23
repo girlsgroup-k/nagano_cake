@@ -1,21 +1,30 @@
 <div class="container">
-  <div class="row">
-     <h4 class="ml-5">商品一覧</h4>
-    <%= link_to new_admin_item_path do %>
-      <button type="button" class="btn btn-light rounded-circle p-0 shadow" style="width:2rem;height:2rem;">＋</button>
-    <% end %>
-  </div>
-  
-  <div class="row">
-    
-  </div> 
+  <div class="row mb-3">
+     <h4 class="col-md-2 ml-5">商品一覧</h4>
+     <div class="col-md-8"></div>
+     <div class="col-md-1">
+      <%= link_to new_admin_item_path do %>
+        <button type="button" class="btn btn-dark rounded-circle p-0 shadow" style="width:2rem;height:2rem;">＋</button>
+      <% end %>
+     </div>
+   </div>
+      <table class="table table table-hover table-bordered">
+          <thead>
+              <tr class="table-secondary">
+                <th>商品ID</th>
+                <th>商品名</th>
+                <th>税抜価格</th>
+                <th>ジャンル</th>
+                <th>ステータス</th>
+              </tr>
+          </thead>
+          <tbody>
             <% @items.each do |item| %>
               <tr>
                 <td><%= item.id %></td>
                 <td><%= link_to item.name, admin_item_path(item.id) %></td>
                 <td><%= item.tax_exclusive_price %></td>
                 <td><%= item.genre.name %></td> 
-                <td></td>
                 <td>
                   <% if @item.is_active == false %>
                     <strong class="text-black-50">販売停止中</strong>
