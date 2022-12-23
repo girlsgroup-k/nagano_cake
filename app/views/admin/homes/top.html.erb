@@ -1,33 +1,41 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h3>注文履歴一覧</h3>
-      <table class="table">
-        <thead>
-          <th>購入日時</th>
-          <th>購入者</th>
-          <th>注文個数</th>
-        </thead>
-        <% @orders.each do |order| %>
-          <tbody>
-            <tr>
-              <td>
-                <%= link_to admin_order_path(order) do %>
-                  <%= order.created_at.strftime("%Y/%m/%d %H:%M:%S") %>
-                <% end %>
-              </td>
-              <td><%= order.customer.first_name %><%= order.customer.last_name %></td>
-              <td>
-                <% order.order_details.each do |order_detail| %>
-                  <% @total += order_detail.quantity %>
-                <% end %>
-                <%= @total %>
-                <% @total = 0 %>
-              </td>
+      <h4 class="ml-5 mb-4">注文履歴一覧</h4>
+      <div class="row">
+        <table class="table table-hover table-bordered">
+          <thead>
+            <tr class="table-secondary">
+              <th>購入日時</th>
+              <th>購入者</th>
+              <th>注文個数</th>
+              <th>注文ステータス</th>
             </tr>
+          </thead>
+          <tbody class="table-md h7">
+            <% @orders.each do |order| %>
+              <tr>
+                <td class="align-middle"><%= link_to admin_order_path(order) do %>
+                    <div class=" text-dark">
+                    <%= order.created_at.strftime("%Y/%m/%d %H:%M:%S") %>
+                    </div>
+                  <% end %>
+                </td>
+                <td class="align-middle">
+                 <%= order.customer.first_name %><%= order.customer.last_name %>
+                </td>
+                <td class="align-middle">
+                  <% order.order_details.each do |order_detail| %>
+                    <% @total += order_detail.quantity %>
+                  <% end %>
+                  <%= @total %>
+                  <% @total = 0 %>
+                </td>
+              </tr>
+            <% end %>
           </tbody>
-        <% end %>
-      </table>
+        </table>
+      </div>
     </div>
   </div>
 </div>
