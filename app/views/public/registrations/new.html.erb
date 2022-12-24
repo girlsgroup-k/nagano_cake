@@ -1,56 +1,69 @@
-<h3>新規会員登録</h3>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "public/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <label>名前</label>
-    (姓)<%= f.text_field :first_name, placeholder: "令和" %>
-    (名)<%= f.text_field :last_name, placeholder: "道子" %>
+<div class="container">
+  <div class="row mt-3">
+  <h4 class="ml-5 mb-4">新規会員登録</h4>
   </div>
-
-  <div class="field">
-    <label>フリガナ</label>
-    (セイ)<%= f.text_field :first_name_kana, placeholder: "レイワ" %>
-    (メイ)<%= f.text_field :last_name_kana, placeholder: "ミチコ" %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "public/shared/error_messages", resource: resource %>
+    <table>
+      <tr>
+        <div class="field">
+          <td valign="center"><label>名前</label></td>
+          <td valign="center">(姓)<%= f.text_field :first_name, placeholder: "令和" %></td>
+          <td valign="center">(名)<%= f.text_field :last_name, placeholder: "道子" %></td>
+        </div>
+      </tr>
+      <tr>
+        <div class="field">
+          <td valign="center"><label>フリガナ</label></td>
+          <td valign="center">(セイ)<%= f.text_field :first_name_kana, placeholder: "レイワ" %></td>
+          <td valign="center">(メイ)<%= f.text_field :last_name_kana, placeholder: "ミチコ" %></td>
+        </div>
+      </tr>
+      <tr>
+        <div class="field">
+          <td><label>メールアドレス</label></td>
+          <td><%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com" %></td>
+        </div>
+      </tr>
+      <tr>
+        <div class="field">
+          <td><label>郵便番号(ハイフンなし)</label></td>
+          <td><%= f.text_field :post_code, placeholder: "0000000" %></td>
+        </div>
+      </tr>
+      <tr>
+        <div class="field">
+          <td><label>住所</label></td>
+          <td><%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0" %></td>
+        </div>
+      </tr>
+      <tr>
+        <div class="field">
+          <td><label>電話番号(ハイフンなし)</label></td>
+          <td><%= f.text_field :phone_number, placeholder: "0000000000" %></td>
+        </div>
+      </tr>
+      <tr>
+        <div class="field">
+          <td><label>パスワード</label></td>
+            <% if @minimum_password_length %>
+              <td><span>(<%= @minimum_password_length %>文字以上)</span></td>
+            <% end %>
+            <td><%= f.password_field :password, autocomplete: "new-password" %></td>
+        </div>
+      </tr>
+      <tr>
+        <div class="field">
+          <td><label>パスワード(確認用)</label>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
+        </div>
+      </tr>
+    </table>
+    <div class="actions">
+      <%= f.submit "新規登録", class: "btn btn-success" %>
+    </div>
+     <% end %>
+    <h4 class="ml-4 mb-3">既に登録済みの方</h4>
+    &emsp;&emsp;&emsp;&emsp;<%= render "public/shared/links" %>
   </div>
-
-  <div class="field">
-    <label>メールアドレス</label>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com" %>
-  </div>
-
-  <div class="field">
-    <label>郵便番号(ハイフンなし)</label>
-    <%= f.text_field :post_code, placeholder: "0000000" %>
-  </div>
-
-  <div class="field">
-    <label>住所</label>
-    <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0" %>
-  </div>
-
-  <div class="field">
-    <label>電話番号(ハイフンなし)</label>
-    <%= f.text_field :phone_number, placeholder: "0000000000" %>
-  </div>
-
-  <div class="field">
-    <label>パスワード</label>
-    <% if @minimum_password_length %>
-      <span>(<%= @minimum_password_length %>文字以上)</span>
-    <% end %>
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <label>パスワード(確認用)</label>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "新規登録", class: "btn btn-success" %>
-  </div>
-<% end %>
-<h3>既に登録済みの方</h3>
-<%= render "public/shared/links" %>
+</div>
