@@ -11,9 +11,9 @@ class Admin::OrdersController < ApplicationController
     @order_details = OrderDetail.where(order_id: @order.id)
     redirect_to admin_order_path
   end
-  
+
   private
-  
+
   def order_params
     params.require(:order).permit(:order_status)
   end
