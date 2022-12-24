@@ -1,22 +1,26 @@
 <div class="container">
-  <div class="row">
-    <div class="col-3">
+  <div class="row align-items-center">
+    <div class="col-2">
       <%= render "public/shared/genre_search", genres: @genres %>
     </div>
     <div class="col-9">
       <div class="row">
-        <div class="col-md-5">
-          <%= image_tag @item.get_item_image(300,200) %>
+        <div class="col-md-6">
+          <%= image_tag @item.get_item_image(350,250) %>
         </div>
-        <div class="col-md-7">
-          <div><%= @item.name %></div>
-          <div> <%= @item.detail %></div>
-          <div>￥<%= @item.tax_exclusive_price %>（税込み）</div>
+        <div class="row-md-6 text-start">
+          <p class="h2 mb-4"><%= @item.name %></p>
+          <div class="col mb-5"> <%= @item.detail %></div>
+          <p class="h4 mb-4">￥<%= @item.tax_exclusive_price %>（税込み）</p>
             <%= form_with model: @cart_item, url: cart_items_path do |f| %>
               <%= f.hidden_field :customer_id, :value => current_customer.id %>
               <%= f.hidden_field :item_id, :value => @item.id %>
-              <%= f.select :item_quantity, *[1..10] %>
-              <%= f.submit 'カートに入れる', class: "btn btn-sm btn-success" %>
+              <div class="row ml-2">
+                <%= f.select :item_quantity, *[1..10] %>
+                <div class="col">
+                  <%= f.submit 'カートに入れる', class: "btn btn-sm btn-success" %>
+                </div>
+              </div>
             <% end %>
           </div>
       </div>
