@@ -18,6 +18,10 @@ class Public::SessionsController < Devise::SessionsController
   # def destroy
   #   super
   # end
+  
+  def after_sign_in_path_for(resource) #サインイン後の遷移先
+    root_path
+  end
 
   protected
 
