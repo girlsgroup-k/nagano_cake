@@ -68,8 +68,11 @@
           <%= f.hidden_field :id, :value => cart_item.id %>
           <%= f.hidden_field :customer_id, :value => current_customer.id %>
         <% end %>
-        <%= f.hidden_field :billing_amount, :value => @total %>
-        <%= f.submit '情報入力に進む', class: "btn btn-sm btn-success" %>
+        <% if @total == 0 %>
+        <% else %>
+          <% f.hidden_field :billing_amount, :value => @total %>
+          <%= f.submit '情報入力に進む', class: "btn btn-sm btn-success" %>
+        <% end %>
       <% end %>
     </div>
   </div>
