@@ -19,7 +19,10 @@
       <table cellpadding="7" cellspacing="7">
         <tbody>
           <% @items.each do |item| %>
-            <td><%= image_tag item.get_item_image(150,100) %><br>
+            <td>
+              <%= link_to item_path(item) do %>
+                <%= image_tag item.get_item_image(150,100) %><br>
+              <% end %>
               <%= item.name %><br>
               ￥<%= item.with_tax_price %>
             </td>
