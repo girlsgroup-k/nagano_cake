@@ -8,8 +8,12 @@
       <div class ="d-flex flex-row flex-wrap">
         <% @items.each do |item| %>
           <div class="col-md-3 mb-3">
-            <div class= "mb-1"><%= image_tag item.get_item_image(150,100) %></div>
-            <div class= "mb-1"><%= link_to item.name, item_path(item.id) %></div>
+            <div class= "mb-1">
+              <%= link_to item_path(item.id) do %>
+                <%= image_tag item.get_item_image(150,100) %>
+              <% end %>
+            </div>
+            <div class= "mb-1"><%= item.name %></div>
             ￥<%= item.with_tax_price %><br>
           </div>
         <% end %>
