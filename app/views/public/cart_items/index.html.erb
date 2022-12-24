@@ -1,37 +1,40 @@
 <div class="container">
   <div class="row">
-    <div class="col">
-      <h2>ショッピングカート</h2>
+    <h4 class="ml-5 mb-4">ショッピングカート</h4>
+    <div class="offset-7">
+      <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, class: "btn btn-danger btn-sm" %>
     </div>
-    <div class="col">
-      <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, class: "btn btn-danger" %>
+  </div>
+  <div class="row">
+    <div class="col offset-2">
+      
     </div>
   </div>
   <div class="row">
     <table class="table table-bordered">
-      <thead>
+      <thead class="table-active">
         <tr>
           <th>商品名</th>
           <th>単価(税込)</th>
           <th>数量</th>
           <th>小計</th>
-          <th colspan="1"></th>
+          <th> </th>
         </tr>
       </thead>
-      <tbody>
+      <tbody class="table-sm h6">
         <% @cart_items.each do |cart_item| %>
           <tr>
-            <td><%= image_tag cart_item.item.get_item_image(60,40) %><%= cart_item.item.name %></td>
-            <td><%= cart_item.item.with_tax_price %></td>
-            <td>
+            <td class="pr-2"><%= image_tag cart_item.item.get_item_image(60,40) %><span class="offset-1"><%= cart_item.item.name %></span></td>
+            <td class="align-middle"><%= cart_item.item.with_tax_price %></td>
+            <td> 
               <%= form_with url: cart_item_path(cart_item.id), model: cart_item do |f| %>
                 <%= f.select :item_quantity, *[1..10] %>
-                <%= f.submit "変更", class: "btn btn-success" %>
+                <%= f.submit "変更", class: "btn btn-success btn-sm" %>
               <% end %>
             </td>
-            <td><%= cart_item.subtotal %></td>
+            <td class="align-middle"><%= cart_item.subtotal %></td>
             <td>
-              <%= link_to "削除する", cart_item_path(cart_item.id), method: :delete, class: "btn btn-danger" %>
+              <%= link_to "削除する", cart_item_path(cart_item.id), method: :delete, class: "btn btn-danger btn-sm" %>
             </td>
           </tr>
         <% end %>
@@ -46,8 +49,8 @@
       <table class="table table table-bordered">
         <tbody>
           <tr>
-            <th scope="row">合計金額</th>
-            <td>
+            <th style="width: 20%" class="table-active flex-fill">合計金額</th>
+            <td class="align-middle">
               <% @cart_items.each do |cart_item| %>
                 <% @total += cart_item.subtotal %>
               <% end %>
@@ -59,7 +62,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col">
+    <div class="col align-middle text-center">
       <%= form_with model: @order, url: new_order_path, method: :get do |f| %>
         <% @cart_items.each do |cart_item| %>
           <%= f.hidden_field :id, :value => cart_item.id %>
