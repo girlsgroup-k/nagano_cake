@@ -3,34 +3,34 @@
   <h4 class="ml-5 mb-4">注文履歴詳細</h4>
   </div>
   <div class="row">
-    <div class="col-3 ml-5">
-      <p>購入者</p>
+    <div class="col-3 ml-5"><h5>購入者</h5></div>
+    <div class="col-3 ml-3">
       <%= @order.customer.first_name %>
     </div>
   </div>
   <div class="row">
+    <div class="col-3 ml-5"><h5>注文日</h5></div>
     <div class="col-3 ml-5">
-      <p>注文日</p>
       <%= @order.created_at.strftime("%Y/%m/%d") %>
     </div>
   </div>
   <div class="row">
+    <div class="col-3 ml-5"><h5>配送先</h5></div>
     <div class="col-3 ml-5">
-      <p>配送先</p>
         <%= @order.select_post_code %>
         <%= @order.select_address %><br>
         <%= @order.select_receiver %>
     </div>
   </div>
   <div class="row">
+    <div class="col-3 ml-5"><h5>支払方法</h5></div>
     <div class="col-3 ml-5">
-      <p>支払方法</p>
       <%= @order.payment_method_i18n %>
     </div>
   </div>
   <div class="row">
+    <div class="col-3 ml-5"><h5>注文ステータス</h5></div>
     <div class="col-3 ml-5">
-      <p>注文ステータス</p>
       <%= form_with url: admin_order_path(@order.id), model: @order do |f| %>
         <%= f.select :order_status, Order.order_statuses_i18n.keys.map {|k| [I18n.t("enums.order.order_status.#{k}"), k]} %>
         <%= f.submit "変更", class: "btn btn-success" %>
@@ -38,7 +38,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-8 ml-5">
+    <div class="col-md-7 ml-5" style="margin-top: 50px;">
       <table class="table table-border="0"">
         <thead>
           <tr>
@@ -53,13 +53,13 @@
             <% @order_details.each do |order_detail| %>
               <%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id) do |f| %>
             <td><%= order_detail.item.name %></td>
-            <td><%= order_detail.order.select_receiver %></td>
+            <td><%= order_detail.tax_included_price %></td>
             <td><%= order_detail.quantity %></td>
-            <td><%= order_detail.tax_included_price + order_detail.quantity %>円</td>
+            <td><%= order_detail.tax_included_price * order_detail.quantity %>円</td>
             <td><%= f.select :production_status, OrderDetail.production_statuses_i18n.keys.map {|k| [I18n.t("enums.order_detail.production_status.#{k}"), k]} %></td>
             <td><%= f.submit "変更", class: "btn btn-success" %></td>
               <% end %>
-            <% end %></td>
+            <% end %>
           </tr>
         </thead>
         <tbody>
@@ -67,7 +67,19 @@
       </table>
     </div>
   </div>
-    </div>
-  </div>
+  <div class="col-xs-4"style="margin-top: 120px;">
+    <% @order_details.each do |order_detail| %>
+      <%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id) do |f| %>
+        <div scope="row">商品合計
+          <%= order_detail.quantity %>
+        </diV>
+        <div scope="row">送料
+          <%= @order.postage %>
+        </div>
+        <div scope="row">請求金額合計
+          <%= order_detail.quantity + @order.postage %>
+        </div>
+      <% end %>
+    <% end %>
   </div>
 </div>
