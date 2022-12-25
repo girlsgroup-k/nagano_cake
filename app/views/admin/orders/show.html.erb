@@ -41,7 +41,7 @@
         <div class="col-8">
           <%= form_with url: admin_order_path(@order.id), model: @order do |f| %>
             <%= f.select :order_status, Order.order_statuses_i18n.keys.map {|k| [I18n.t("enums.order.order_status.#{k}"), k]} %>
-            <span class="ml-3"><%= f.submit "更新", class: "btn btn-success btn-sm w-20" %></span>
+            <span class="ml-3"><%= f.submit "更新", class: "btn btn-outline-secondary btn-sm w-20" %></span>
           <% end %>
         </div>
         <div class="col-2"></div>
@@ -71,7 +71,7 @@
             <div class="col-3 text-center">
               <%= f.select :production_status, OrderDetail.production_statuses_i18n.keys.map {|k| [I18n.t("enums.order_detail.production_status.#{k}"), k]} %>
             </div>
-            <div class="col"><%= f.submit "更新", class: "btn btn-success" %></div>
+            <div class="col"><%= f.submit "更新", class: "btn btn-outline-secondary" %></div>
           </div>
         <% end %>
       <% end %>

@@ -7,7 +7,7 @@
           </div>
           <%= f.text_field :name, placeholder: "ジャンル名", class: "col-md-6 mr-3" %>
           <div class="col-md-1">
-            <%= f.submit '新規登録', class: "btn btn-lg btn-success" %>
+            <%= f.submit '新規登録', class: "btn btn-lg btn-outline-secondary" %>
           </div>
         <% end %>
   </div>
@@ -20,8 +20,7 @@
     <div class="row d-flex align-items-center">
       <div class="col-4 py-3 pr-4 border-bottom">
         <%= genre.name %>
-        <div class="float-right"><%= link_to "編集する", edit_admin_genre_path(genre), class: "btn btn-success" %></div>
-        
+        <div class="float-right"><%= link_to "編集する", edit_admin_genre_path(genre), class: "btn btn-outline-secondary" %></div>
       </div>
     </div>
   <% end %>

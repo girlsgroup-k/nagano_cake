@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-  <div class="footerFixed">
   <head>
     <title>NaganoCake</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -12,11 +11,11 @@
   </head>
   <body>
     <%= render 'layouts/header' %>
-    <div style= 'height: 100px;'></div>
-    <main class="py-4 h-100">
+    <div style= 'height: 90px; background-color: rgba(250, 240, 230, 1);'></div>
+    <main class="py-4 " style=" background-color: rgba(250, 240, 230, 1); height: 100vh; " >
       <%= yield %>
     </main>
-    <div style= 'height: 50px;'></div>
+    <div style= 'height: 50px; background-color: rgba(250, 240, 230, 1);'></div>
     <%= render 'layouts/footer' %>
   </body>
   <footer></footer>
