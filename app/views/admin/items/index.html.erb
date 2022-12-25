@@ -8,7 +8,7 @@
       <% end %>
      </div>
    </div>
-      <table class="table table table-hover table-bordered">
+      <table class="table table table-bordered">
           <thead>
               <tr class="table-secondary">
                 <th>商品ID</th>
@@ -22,9 +22,9 @@
             <% @items.each do |item| %>
               <tr>
                 <td><%= item.id %></td>
-                <td><%= link_to item.name, admin_item_path(item.id), class: "text-success" %></td>
+                <td><%= link_to item.name, admin_item_path(item.id), class: "text-secondary" %></td>
                 <td><%= item.tax_exclusive_price %></td>
-                <td><%= item.genre.name %></td> 
+                <td><%= item.genre.name %></td>
                 <td>
                   <% if @item.is_active == false %>
                     <strong class="text-black-50">販売停止中</strong>
@@ -36,6 +36,6 @@
              <% end %>
           </tbody>
       </table>
-</div>     
+</div>
 <div class="row mx-auto"><%= paginate @items %></div>
 
