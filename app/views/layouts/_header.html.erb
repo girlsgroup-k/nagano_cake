@@ -1,4 +1,4 @@
- <header style="height: 100px;" class="fixed-top border-bottom border-dark py-3 bg-white">
+ <header style="height: 95px;" class="fixed-top border-bottom border-dark py-3 bg-white">
     <div class="container">
       <div class="row">
         <div class="col float-left">
@@ -6,60 +6,62 @@
             LOGO
           <% end %>
         </div>
-        <div class="header_link">
-          <div class="d-grid gap-2 d-md-block">
-          <% if customer_signed_in? %>
+        <% if customer_signed_in? %>
+          <div class="col float-center">
             <div>ようこそ、<%= current_customer.first_name %> さん！</div>
-            <div class="float-right">
-              <%= link_to my_page_path,class: 'btn btn-outline-dark' do %>
-                マイページ
-              <% end %>
-              <%=  link_to items_path,class: 'btn btn-outline-dark' do %>
-                商品一覧
-              <% end %>
-              <%=  link_to cart_items_path ,class: 'btn btn-outline-dark' do %>
-                カート
-              <% end %>
-              <%= link_to destroy_customer_session_path, method: :delete,class: 'btn btn-outline-dark' do %>
-                ログアウト
-              <% end %>
-            </div>
-          <% elsif admin_signed_in? %>
-            <div class="float-right">
-              <%= link_to admin_items_path,class: 'btn btn-outline-dark' do %>
-                商品一覧
-              <% end %>
-              <%=  link_to admin_customers_path,class: 'btn btn-outline-dark' do %>
-                会員一覧
-              <% end %>
-              <%= link_to admin_top_path,class: 'btn btn-outline-dark' do %>
-                注文履歴一覧
-              <% end %>
-              <%=  link_to admin_genres_path,class: 'btn btn-outline-dark' do %>
-                ジャンル一覧
-              <% end %>
-              <%= link_to destroy_admin_session_path, method: :delete,class: 'btn btn-outline-dark' do %>
-                ログアウト
-              <% end %>
-            </div>
-          <% else %>
-            <div class="float-right">
-              <%= link_to about_path,class: 'btn btn-outline-dark' do %>
-                About
-              <% end %>
-              <%=  link_to items_path,class: 'btn btn-outline-dark' do %>
-                商品一覧
-              <% end %>
-              <%= link_to new_customer_registration_path,class: 'btn btn-outline-dark' do %>
-                新規登録
-              <% end %>
-              <%= link_to new_customer_session_path ,class: 'btn btn-outline-dark' do %>
-                ログイン
-              <% end %>
-            </div>
-          <% end %>
           </div>
-        </div>
+          <div class="header_link">
+            <div class="d-grid gap-2 d-md-block">
+              <div class="float-right">
+                <%= link_to my_page_path,class: 'btn btn-outline-dark' do %>
+                  マイページ
+                <% end %>
+                <%=  link_to items_path,class: 'btn btn-outline-dark' do %>
+                  商品一覧
+                <% end %>
+                <%=  link_to cart_items_path ,class: 'btn btn-outline-dark' do %>
+                  カート
+                <% end %>
+                <%= link_to destroy_customer_session_path, method: :delete,class: 'btn btn-outline-dark' do %>
+                  ログアウト
+                <% end %>
+              </div>
+            <% elsif admin_signed_in? %>
+              <div class="float-right">
+                <%= link_to admin_items_path,class: 'btn btn-outline-dark' do %>
+                  商品一覧
+                <% end %>
+                <%=  link_to admin_customers_path,class: 'btn btn-outline-dark' do %>
+                  会員一覧
+                <% end %>
+                <%= link_to admin_top_path,class: 'btn btn-outline-dark' do %>
+                  注文履歴一覧
+                <% end %>
+                <%=  link_to admin_genres_path,class: 'btn btn-outline-dark' do %>
+                  ジャンル一覧
+                <% end %>
+                <%= link_to destroy_admin_session_path, method: :delete,class: 'btn btn-outline-dark' do %>
+                  ログアウト
+                <% end %>
+              </div>
+            <% else %>
+              <div class="float-right">
+                <%= link_to about_path,class: 'btn btn-outline-dark' do %>
+                  About
+                <% end %>
+                <%=  link_to items_path,class: 'btn btn-outline-dark' do %>
+                  商品一覧
+                <% end %>
+                <%= link_to new_customer_registration_path,class: 'btn btn-outline-dark' do %>
+                  新規登録
+                <% end %>
+                <%= link_to new_customer_session_path ,class: 'btn btn-outline-dark' do %>
+                  ログイン
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
         <span class="botder border-dark"></span>
       </div>
     </div>
