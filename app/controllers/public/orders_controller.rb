@@ -19,7 +19,7 @@ class Public::OrdersController < ApplicationController
     else
       render :new
     end
-    @cart_items = CartItem.all
+    @cart_items = CartItem.where(customer_id: current_customer.id)
     @total = 0
     @amount_billed = 0
   end
