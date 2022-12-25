@@ -4,7 +4,6 @@ class Admin::OrdersController < ApplicationController
     @order_details = OrderDetail.where(order_id: @order.id)
     @total = 0      #請求金額合計
     @subtotal = 0   #小計
-    @subtotals = 0  #商品合計
   end
 
   def update

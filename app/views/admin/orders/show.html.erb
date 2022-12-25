@@ -83,10 +83,7 @@
             <th>商品合計</th>
             <td>
               <div class="text-right mb-2">
-                <% @order_details.each do |order_detail| %>
-                  <% @subtotals += order_detail.tax_included_price * order_detail.quantity %>
-                <% end %>
-                <%= @subtotals.to_s(:delimited) %> 円
+                <%= @order.billing_amount.to_s(:delimited) %> 円
               </div>
             </td>
           </tr>
@@ -102,7 +99,7 @@
             <th>請求金額合計</th>
             <td>
               <div class="text-right ml-3 mb-2">
-                <% @total = @subtotals + @order.postage %>
+                <% @total = @order.billing_amount + @order.postage %>
                 <b><%= @total.to_s(:delimited) %> 円</b>
               </div>
             </td>
