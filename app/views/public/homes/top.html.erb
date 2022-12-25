@@ -4,11 +4,24 @@
       <%= render "public/shared/genre_search", genres: @genres %>
     </div>
     <div class="col-8">
-      <div class="top_introduction text-center ml-5  py-5">
-        ようこそ、ながのCAKEへ！<br>
-        このサイトは、ケーキ販売のECサイトになります。<br>
-        会員ではない方も商品の閲覧ができますが、<br>
-        購入には会員登録が必要になります。
+      <div class="card border-0">
+        <div class="card-img-overlay">
+          <div class="row">
+            <div class="col">
+              <div class="cover-text text-center ml-5  py-5">
+                <p>
+                ようこそ、ながのCAKEへ！<br>
+                このサイトは、ケーキ販売のECサイトになります。<br>
+                会員ではない方も商品の閲覧ができますが、<br>
+                購入には会員登録が必要になります。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-4">
+        <%= image_tag 'no_image.jpg', size: "500x250" %>
       </div>
     </div>
   </div>
