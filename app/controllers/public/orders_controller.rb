@@ -20,8 +20,8 @@ class Public::OrdersController < ApplicationController
       render :new
     end
     @cart_items = CartItem.where(customer_id: current_customer.id)
-    @total = 0
-    @amount_billed = 0
+    @total = 0  #合計金額
+    @amount_billed = 0 #請求金額
   end
 
   def create
@@ -50,8 +50,8 @@ class Public::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @order_details = @order.order_details.all
-    @total = 0
-    @sub_total = 0
+    @sub_total = 0  #小計
+    @amount_billed = 0 #ご請求額
   end
 
   private

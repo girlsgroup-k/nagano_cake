@@ -37,8 +37,7 @@
           <tr>
             <td style="width: 60%" class="table-active align-middle">商品合計</td>
             <td style="width: 40%" >
-              <% @total = @order.billing_amount - @order.postage %>
-              <%= @total.to_s(:delimited) %>
+              <%= @order.billing_amount.to_s(:delimited) %>
             </td>
           </tr>
           <tr>
@@ -46,8 +45,11 @@
             <td><%= @order.postage.to_s(:delimited) %></td>
           </tr>
           <tr>
-            <td class="table-active align-middle">ご請求額</td>
-            <td><%= @order.billing_amount.to_s(:delimited) %></td>
+            <td class="table-active align-middle"><b>ご請求額</b></td>
+            <td>
+              <% @amount_billed = @order.billing_amount + @order.postage %>
+              <%= @amount_billed.to_s(:delimited) %>
+            </td>
           </tr>
         </tbody>
       </table>
