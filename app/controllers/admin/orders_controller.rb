@@ -2,9 +2,9 @@ class Admin::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @order_details = OrderDetail.where(order_id: @order.id)
-    @total = 0
-    @subtotal = 0
-    @subtotals = 0
+    @total = 0      #請求金額合計
+    @subtotal = 0   #小計
+    @subtotals = 0  #商品合計
   end
 
   def update

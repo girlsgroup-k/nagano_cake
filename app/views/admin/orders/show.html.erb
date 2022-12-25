@@ -60,7 +60,7 @@
       </div>
       <% @order_details.each do |order_detail| %>
         <%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id) do |f| %>
-          <div class="row my-2 d-flex align-items-center">
+          <div class="row my-3 d-flex align-items-center">
             <div class="col-3"><%= order_detail.item.name %></div>
             <div class="col-2"><%= order_detail.tax_included_price.to_s(:delimited) %></div>
             <div class="col"><%= order_detail.quantity.to_s(:delimited) %></div>
@@ -77,13 +77,15 @@
       <% end %>
     </div>
     <div class="col-3 align-self-end">
-      <div class="row ml-2">
+      <div class="row ml-4 h6">
         <table>
           <tr>
             <th>商品合計</th>
             <td>
-              <div class="text-right mb-1">
-                <% @subtotals = @order.billing_amount - @order.postage %>
+              <div class="text-right mb-2">
+                <% @order_details.each do |order_detail| %>
+                  <% @subtotals += order_detail.tax_included_price * order_detail.quantity %>
+                <% end %>
                 <%= @subtotals.to_s(:delimited) %> 円
               </div>
             </td>
@@ -91,7 +93,7 @@
           <tr>
             <th>送料</th>
             <td>
-              <div class="text-right mb-1">
+              <div class="text-right mb-2">
                 <%= @order.postage %> 円
               </div>
             </td>
@@ -99,7 +101,7 @@
           <tr>
             <th>請求金額合計</th>
             <td>
-              <div class="text-right ml-3 mb-1">
+              <div class="text-right ml-3 mb-2">
                 <% @total = @subtotals + @order.postage %>
                 <b><%= @total.to_s(:delimited) %> 円</b>
               </div>
