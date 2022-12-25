@@ -14,18 +14,18 @@
     <div class="col-md-5 offset-md-2">
       <div class="field">
         <label class="col-md-4 offset-md-2">メールアドレス</label>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com" %>
       </div>
     </div>
   </div>
    <div class="row mb-3">
-    <div class="col-md-5 offset-md-2">  
+    <div class="col-md-5 offset-md-2">
         <div class="field">
           <label class="col-md-4 offset-md-2">パスワード</label>
           <%= f.password_field :password, autocomplete: "current-password" %>
         </div>
     </div>
-  </div>       
+  </div>
   <div class="row justify-content-center mb-5">
      <div class="col-4 ml-2">
       <div class="actions">
@@ -35,12 +35,12 @@
   </div>
         <% end %>
   <div class="row mb-2">
-    <div class="col-md-3 offset-md-1">     
+    <div class="col-md-3 offset-md-1">
       会員登録がお済みでない方
     </div>
   </div>
   <div class="row mb-2">
-    <div class="col-md-4 offset-md-2">    
+    <div class="col-md-4 offset-md-2">
       <%= render "public/shared/links" %>
     </div>
   </div>
