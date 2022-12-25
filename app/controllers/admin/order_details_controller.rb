@@ -4,7 +4,7 @@ class Admin::OrderDetailsController < ApplicationController
     if @order_detail.update(order_detail_params)
       if @order_detail.production_status == OrderDetail.production_statuses.key(2)
         @order_detail.order.update(order_status: 2)
-      elsif @order_detail.production_status == OrderDetail.production_statuses.key(3)
+      else @order_detail.production_status == OrderDetail.production_statuses.key(3)
         @order_detail.order.update(order_status: 3)
       end
     end
