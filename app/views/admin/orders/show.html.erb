@@ -37,7 +37,7 @@
   </div>
   <div class="row">
     <div class="col-8" style="margin-top: 50px;">
-      <table class="table table-border="0"">
+      <table class="table table-border">
         <thead>
           <tr>
             <th>商品名</th>
@@ -51,9 +51,12 @@
             <%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id) do |f| %>
               <tr>
                 <td><%= order_detail.item.name %></td>
-                <td><%= order_detail.tax_included_price %></td>
+                <td><%= order_detail.tax_included_price.to_s(:delimited) %></td>
                 <td><%= order_detail.quantity %></td>
-                <td><%= order_detail.tax_included_price * order_detail.quantity %>円</td>
+                <td>
+                  <% @subtotal = order_detail.tax_included_price * order_detail.quantity %>
+                  <%= @subtotal.to_s(:delimited) %>
+                </td>
                 <td><%= f.select :production_status, OrderDetail.production_statuses_i18n.keys.map {|k| [I18n.t("enums.order_detail.production_status.#{k}"), k]} %></td>
                 <td><%= f.submit "変更", class: "btn btn-success" %></td>
               </tr>
@@ -67,7 +70,10 @@
     <table class="col-3 ml-5" style="margin-top: 70px;">
       <tr>
         <td><strong>商品合計</strong></td>
-        <td><%= @total = @order.billing_amount - @order.postage %>円</td>
+        <td>
+          <% @subtotals = @order.billing_amount - @order.postage %>
+          <%= @subtotals.to_s(:delimited) %>円
+        </td>
       </tr>
       <tr>
         <td><strong>送料</strong></td>
@@ -75,7 +81,10 @@
       </tr>
       <tr>
         <td><strong>請求金額合計</strong></td>
-        <td><%= @total + @order.postage %>円</td>
+        <td>
+          <% @total = @subtotals + @order.postage %>
+          <%= @total.to_s(:delimited) %>円
+        </td>
       </tr>
     </table>
     </div>
