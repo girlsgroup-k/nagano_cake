@@ -31,7 +31,7 @@
           <%= f.text_field :name, placeholder: "令和道子" %>
         </div>
         <div class="col-3">
-          <%= f.submit '新規登録', class: "btn btn-success", style: "width:100px" %>
+          <%= f.submit '新規登録', class: "btn btn-outline-secondary", style: "width:100px" %>
         </div>
       </div>
     </div>
@@ -55,8 +55,8 @@
               <td class="align-middle"><%= delivery_address.address %></td>
               <td class="align-middle"><%= delivery_address.name %></td>
               <td class="align-middle text-center">
-                <%= link_to "編集する", edit_delivery_address_path(delivery_address), class: "btn btn-success mr-2" %>
-                <%= link_to "削除する", delivery_address_path(delivery_address), method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-danger"  %>
+                <%= link_to "編集する", edit_delivery_address_path(delivery_address), class: "btn btn-outline-secondary mr-2" %>
+                <%= link_to "削除する", delivery_address_path(delivery_address), method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-outline-secondary"  %>
               </td>
             </tr>
           <% end %>

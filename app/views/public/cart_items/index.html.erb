@@ -2,7 +2,7 @@
   <div class="row">
     <h4 class="ml-5 mb-4">ショッピングカート</h4>
     <div class="offset-7">
-      <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, class: "btn btn-danger btn-sm" %>
+      <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, class: "btn btn-outline-secondary btn-sm" %>
     </div>
   </div>
   <div class="row">
@@ -29,12 +29,12 @@
             <td> 
               <%= form_with url: cart_item_path(cart_item.id), model: cart_item do |f| %>
                 <%= f.select :item_quantity, *[1..10] %>
-                <%= f.submit "変更", class: "btn btn-success btn-sm" %>
+                <%= f.submit "変更", class: "btn btn-outline-secondary btn-sm" %>
               <% end %>
             </td>
             <td class="align-middle"><%= cart_item.subtotal %></td>
             <td>
-              <%= link_to "削除する", cart_item_path(cart_item.id), method: :delete, class: "btn btn-danger btn-sm" %>
+              <%= link_to "削除する", cart_item_path(cart_item.id), method: :delete, class: "btn btn-outline-secondary btn-sm" %>
             </td>
           </tr>
         <% end %>
@@ -43,7 +43,7 @@
   </div>
   <div class="row">
     <div class="col">
-      <%= link_to "買い物を続ける", root_path, class: "btn btn-primary" %>
+      <%= link_to "買い物を続ける", root_path, class: "btn btn-outline-secondary" %>
     </div>
     <div class="col">
       <table class="table table table-bordered">
@@ -71,7 +71,7 @@
         <% if @total == 0 %>
         <% else %>
           <% f.hidden_field :billing_amount, :value => @total %>
-          <%= f.submit '情報入力に進む', class: "btn btn-sm btn-success" %>
+          <%= f.submit '情報入力に進む', class: "btn btn-sm btn-outline-secondary" %>
         <% end %>
       <% end %>
     </div>
