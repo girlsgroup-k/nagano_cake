@@ -11,7 +11,7 @@
         <div class="row-md-6 text-start">
           <p class="h2 mb-4"><%= @item.name %></p>
           <div class="col mb-5"> <%= @item.detail %></div>
-          <p class="h4 mb-4">￥<%= @item.tax_exclusive_price %>（税込み）</p>
+          <p class="h4 mb-4">￥<%= @item.with_tax_price %>（税込）</p>
             <%= form_with model: @cart_item, url: cart_items_path do |f| %>
               <%= f.hidden_field :customer_id, :value => current_customer.id %>
               <%= f.hidden_field :item_id, :value => @item.id %>

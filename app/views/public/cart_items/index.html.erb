@@ -50,12 +50,12 @@
         <tbody>
           <tr>
             <th style="width: 20%" class="table-active flex-fill">合計金額</th>
-            <td class="align-middle">
+            <th class="align-middle">
               <% @cart_items.each do |cart_item| %>
                 <% @total += cart_item.subtotal %>
               <% end %>
               <%= @total %>
-            </td>
+            </th>
           </tr>
         </tbody>
       </table>
