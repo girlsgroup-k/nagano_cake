@@ -11,37 +11,38 @@
     <div class="col-md-9">
       <div class="mb-3 row">
         <p class="col-md-3">商品名</p>
-        <p class="col-md-5">
+        <h5 class="col-md-5">
           <%= @item.name %>
-        </p>
+        </h5>
       </div>
       <div class="mb-3 row">
         <p class="col-md-3">商品説明</p>
-        <p class="col-md-5">
+        <h5 class="col-md-5">
           <%= @item.detail %>
-        </p>
+        </h5>
       </div>
       <div class="mb-3 row">
         <p class="col-md-3">ジャンル</p>
-        <p class="col-md-5">
+        <h5 class="col-md-5">
          <%= @item.genre.name %>
-        </p>
+        </h5>
       </div>
       <div class="mb-3 row">
-        <p class="col-md-3">税込価格(税抜価格)</p>
-        <p class="col-md-5">
-          <%= @item.tax_exclusive_price.to_s(:delimited) %>円
-        </p>
+        <p class="col-md-3">税込価格<br>(税抜価格)</p>
+        <h5 class="col-md-5 d-flex align-items-center">
+            <%= @item.with_tax_price.to_s(:delimited) %>
+            （<%= @item.tax_exclusive_price.to_s(:delimited) %>）円
+        </h5>
       </div>
       <div class="mb-3 row">
         <p class="col-md-3">販売ステータス</p>
-        <p class="col-md-5">
+        <h5 class="col-md-5">
           <% if @item.is_active == false %>
             <strong class="text-black-50">販売停止中</strong>
           <% else %>
             <strong class="text-success">販売中</strong>
           <% end %>
-        </p>
+        </h5>
       </div>
     </div>
   </div>
