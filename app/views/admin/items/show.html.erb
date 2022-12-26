@@ -30,7 +30,7 @@
       <div class="mb-3 row">
         <p class="col-md-3">税込価格(税抜価格)</p>
         <p class="col-md-5">
-          <%= @item.tax_exclusive_price %>円
+          <%= @item.tax_exclusive_price.to_s(:delimited) %>円
         </p>
       </div>
       <div class="mb-3 row">
