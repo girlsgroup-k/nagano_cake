@@ -36,7 +36,7 @@
                 <%= image_tag item.get_item_image(150,100) %><br>
               <% end %>
               <%= item.name %><br>
-              ￥<%= item.with_tax_price %>
+              ￥<%= item.with_tax_price.to_s(:delimited) %>
             </td>
           <% end %>
         </tbody>
