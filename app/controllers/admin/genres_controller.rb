@@ -8,7 +8,7 @@ class Admin::GenresController < ApplicationController
     @genre = Genre.new(genre_params)
     @genre.save
     @genres = Genre.all
-    render 'index'
+    redirect_to admin_genres_path
   end
 
   def edit
