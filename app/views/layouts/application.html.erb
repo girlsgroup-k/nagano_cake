@@ -6,11 +6,17 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-    <%= yield %>
+    <%= render 'layouts/header' %>
+    <div style= 'height: 90px; background-color: rgba(250, 240, 230, 1);'></div>
+    <main class="py-4 h-100" style=" background-color: rgba(250, 240, 230, 1); min-height: 100vh;">
+      <%= yield %>
+    </main>
+    <div style= 'height: 50px; background-color: rgba(250, 240, 230, 1);'></div>
+    <%= render 'layouts/footer' %>
   </body>
+  <footer></footer>
 </html>

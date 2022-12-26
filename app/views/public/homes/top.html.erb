@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+    <div class="col-2">
+      <%= render "public/shared/genre_search", genres: @genres %>
+    </div>
+    <div class="col-8">
+      <div class="card border-0">
+        <div class="card-img-overlay">
+          <div class="row">
+            <div class="col">
+              <div class="cover-text text-center ml-5 py-5">
+                <div class=" text-white pt-4 pr-4">
+                ようこそ、ながのCAKEへ！<br>
+                このサイトは、ケーキ販売のECサイトになります。<br>
+                会員ではない方も商品の閲覧ができますが、<br>
+                購入には会員登録が必要になります。</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-4">
+        <%= image_tag 'shop.jpg', size: "500x250" %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2"></div>
+     <div class="col-10">
+      <p class="h2 mb-3">新着商品</p>
+      <div class ="d-flex flex-row flex-wrap">
+        <% @items.each do |item| %>
+          <div class="col-md-3 mb-3">
+            <div class= "mb-1">
+              <%= link_to item_path(item.id) do %>
+                <%= image_tag item.get_item_image(150,100) %>
+              <% end %>
+            </div>
+            <div class= "mb-1"><%= item.name %></div>
+            ￥<%= item.with_tax_price.to_s(:delimited) %><br>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-10 text-right">
+      <%=  link_to "全ての商品を見る>", items_path, class: "text-success" %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,61 @@
+<div class="container">
+  <h2>商品新規登録</h2>
+  <%= form_with model: [:admin, @item] do |f| %>
+    <div class="row g-3 align-items-center">
+      <div class="col-auto">
+        <label for="inputPassword6" class="col-form-label">商品画像</label>
+      </div>
+      <div class="col-auto">
+        <%= f.file_field :item_image, accept: "image/*"%>
+      </div>
+    </div>
+    <div class="row g-3 align-items-center">
+      <div class="col-auto">
+        <label for="inputPassword6" class="col-form-label">商品名</label>
+      </div>
+      <div class="col-auto">
+        <%= f.text_field :name %>
+      </div>
+    </div>
+    <div class="row g-3 align-items-center">
+      <div class="col-auto">
+        <label for="inputPassword6" class="col-form-label">商品説明</label>
+      </div>
+      <div class="col-auto">
+        <%= f.text_area :detail %>
+      </div>
+    </div>
+    <div class="row g-3 align-items-center">
+      <div class="col-auto">
+        <label for="inputPassword6" class="col-form-label">ジャンル</label>
+      </div>
+      <div class="col-auto">
+        <%= f.collection_select :genre_id, Genre.all, :id, :name %>
+      </div>
+    </div>
+    <div class="row g-3 align-items-center">
+      <div class="col-auto">
+        <label for="inputPassword6" class="col-form-label">販売価格</label>
+      </div>
+      <div class="col-auto">
+        <%= f.number_field :tax_exclusive_price %>
+      </div>
+    </div>
+    <div class="row g-3 align-items-center">
+      <div class="col-auto">
+        <label for="inputPassword6" class="col-form-label">販売ステータス</label>
+      </div>
+      <div class="col-auto">
+        <%= f.radio_button :is_active, :true %>
+        <%= label :is_active, "販売中", {value: :true, style: "display: inline-block;"} %>
+        <%= f.radio_button :is_active, :false %>
+        <%= label :is_active, "販売停止中", {value: :false, style: "display: inline-block;"} %>
+      </div>
+    </div>
+    <div class="row g-3 align-items-center">
+      <div class="col-auto">
+        <%= f.submit "新規登録" ,class: 'btn btn-sm btn-outline-secondary' %>
+      </div>
+    </div>
+  <% end %>
+</div>

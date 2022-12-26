@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="row mb-3">
+    <div class="col">
+      <h4 class="ml-5">商品編集</h4>
+    </div>
+  </div>
+  <%= form_with model: [:admin, @item], url: admin_item_path(@item.id), method: :patch do |f| %>
+  <div class="form-group row">
+    <label class="col-md-2 offset-md-2">商品画像</label>
+    <div class="col-md-5">
+      <%= f.file_field :item_image, accept: "image/*"%>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-md-2 offset-md-2">商品名</label>
+    <div class="col-md-5">
+     <%= f.text_field :name, style: "width:60%;", placeholder: "商品名" %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-md-2 offset-md-2">商品説明</label>
+    <div class="col-md-5">
+      <%= f.text_area :detail, rows: "6",style: "width:60%;", placeholder: "ここに説明文を記述します" %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-md-2 offset-md-2">ジャンル</label>
+    <div class="col-md-4">
+      <%= f.collection_select :genre_id, Genre.all, :id, :name %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-md-2 offset-md-2">販売価格</label>
+    <div class="col-md-4">
+     <%= f.number_field :tax_exclusive_price, style: "width:76%;" %>円
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-md-2 offset-md-2">販売ステータス</label>
+    <div class="col-md-4">
+      <%= f.radio_button :is_active, :true %>
+      <%= label :is_active, "販売中", {value: :true, style: "display: inline-block;"} %>
+      <%= f.radio_button :is_active, :false %>
+      <%= label :is_active, "販売停止中", {value: :false, style: "display: inline-block;"} %>
+    </div>
+  </div>
+  <div class="row mb-5">
+     <div class="col-2 offset-md-5">
+      <div class="actions">
+        <%= f.submit "変更を保存" ,class: 'btn btn-md btn-outline-secondary' %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+  </div>
+</div>

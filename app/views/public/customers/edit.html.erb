@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="row">
+    <h4 class="ml-5 mb-4">会員情報編集</h4>
+  </div>
+  <%= form_with model: @customer, url: customers_update_path(@customer.id) do |f| %>
+  <div class="row">
+    <div class="col">
+      <div class="row">
+        <div class="col-3">
+          <p>氏名</p>
+        </div>
+        <div class="col-9">
+          <%= f.text_field :first_name %>　<%= f.text_field :last_name %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3">
+          <p>フリガナ</p>
+        </div>
+        <div class="col-9">
+          <%= f.text_field :first_name_kana %>　<%= f.text_field :last_name_kana %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3">
+          <p>郵便番号</p>
+        </div>
+        <div class="col-9">
+          <%= f.text_field :post_code %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3">
+          <p>住所</p>
+        </div>
+        <div class="col-9">
+          <%= f.text_field :address, size: :"65" %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3">
+          <p>電話番号</p>
+        </div>
+        <div class="col-9">
+          <%= f.text_field :phone_number %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3">
+          <p>メールアドレス</p>
+        </div>
+        <div class="col-9">
+          <%= f.text_field :email %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-4">
+      <%= f.submit "編集内容を保存", class: "btn btn-outline-secondary", style: "width:200px" %>
+    </div>
+    <div class="col-5">
+      <%= link_to "退会する", customers_check_path, class: "btn btn-outline-secondary" %>
+    </div>
+  </div>
+  <% end %>
+</div>
